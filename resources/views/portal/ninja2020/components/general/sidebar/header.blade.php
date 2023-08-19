@@ -61,29 +61,29 @@
                     <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
                         <div>
                             <button data-ref="client-profile-dropdown" @click="open = !open"
-                                class="max-w-xs flex items-center text-sm rounded-full focus:outline-none focus:ring">
+                                class="max-w-xs flex items-center focus:outline-none">
                                 <img class="h-8 w-8 rounded-full" src="{{ auth()->guard('contact')->user()->avatar() }}"
                                     alt="" />
                                 <span
                                     class="ml-2 hidden sm:block">{{ auth()->guard('contact')->user()->present()->name() }}</span>
                             </button>
                         </div>
-                        <div x-show="open" style="display:none;" x-transition:enter="transition ease-out duration-100"
+                        <div x-show="open" style="display:none" x-transition:enter="transition ease-out duration-100"
                             x-transition:enter-start="transform opacity-0 scale-95"
                             x-transition:enter-end="transform opacity-100 scale-100"
                             x-transition:leave="transition ease-in duration-75"
                             x-transition:leave-start="transform opacity-100 scale-100"
                             x-transition:leave-end="transform opacity-0 scale-95"
-                            class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-                            <div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
+                            class="origin-top-right absolute right-0 mt-4 shadow-xl">
+                            <div class="flex whitespace-nowrap py-4 ring-2 ring-purple-700">
                                 <a data-ref="client-profile-dropdown-settings"
                                     href="{{ route('client.profile.edit', ['client_contact' => auth()->guard('contact')->user()->hashed_id]) }}"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150">
+                                    class="block px-6 py-3 hover:text-purple-700 transition ease-in-out duration-150">
                                     {{ ctrans('texts.profile') }}
                                 </a>
 
                                 <a href="{{ route('client.logout') }}"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150">
+                                    class="block px-6 py-3 hover:text-purple-700 transition ease-in-out duration-150">
                                     {{ ctrans('texts.logout') }}
                                 </a>
                             </div>
