@@ -4,7 +4,8 @@
 @endphp
 
 @push('head')
-    <meta name="pdf-url" content="{{ $url ?? $entity->pdf_file_path($invitation, 'url', true) }}?cache_buster={{time()}}">
+    <meta name="pdf-url"
+        content="{{ $url ?? $entity->pdf_file_path($invitation, 'url', true) }}?cache_buster={{ time() }}">
     <script src="{{ asset('js/vendor/pdf.js/pdf.min.js') }}"></script>
 @endpush
 
@@ -82,16 +83,18 @@
     </section>
 </div>
 
-@if($mobile)
+@if ($mobile)
     <div class="w-full h-full overflow-auto mt-4">
         <canvas id="pdf-placeholder" class="shadow rounded-lg bg-white"></canvas>
     </div>
 @else
-    <iframe id="pdf-iframe" src="{{ $url ?? $entity->pdf_file_path($invitation, 'url', true) }}?cache_buster={{time()}}" class="h-screen w-full border-0 mt-4"></iframe>
+    <iframe id="pdf-iframe"
+        src="{{ $url ?? $entity->pdf_file_path($invitation, 'url', true) }}?cache_buster={{ time() }}"
+        class="h-screen w-full border-0 mt-4"></iframe>
 @endif
 
 
-@if($mobile)
+@if ($mobile)
     @push('footer')
         <script src="{{ asset('js/clients/shared/pdf.js') }}" defer></script>
     @endpush

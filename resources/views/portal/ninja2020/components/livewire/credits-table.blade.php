@@ -12,35 +12,40 @@
     </div>
     <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div class="align-middle inline-block min-w-full overflow-hidden rounded">
-            <table class="min-w-full shadow rounded border border-gray-200 mt-4 credits-table">
+            <table class="min-w-full mt-4 credits-table">
                 <thead>
                     <tr>
-                        <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-white uppercase border-b border-gray-200 bg-primary">
+                        <th
+                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('number')" class="cursor-pointer">
                                 {{ ctrans('texts.credit_number') }}
                             </span>
                         </th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-primary text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('amount')" class="cursor-pointer">
                                 {{ ctrans('texts.amount') }}
                             </span>
                         </th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-primary text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('balance')" class="cursor-pointer">
                                 {{ ctrans('texts.balance') }}
                             </span>
                         </th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-primary text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('date')" class="cursor-pointer">
                                 {{ ctrans('texts.credit_date') }}
                             </span>
                         </th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-primary text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('public_notes')" class="cursor-pointer">
                                 {{ ctrans('texts.notes') }}
                             </span>
                         </th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-primary"></th>
+                        <th class="px-6 py-3 border-b-2 border-gray-200"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,7 +67,8 @@
                                 {{ $credit->public_notes }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-gray-500">
-                                <a href="{{ route('client.credit.show', $credit->hashed_id) }}" class="button-link text-primary">
+                                <a href="{{ route('client.credit.show', $credit->hashed_id) }}"
+                                    class="button-link text-primary">
                                     @lang('texts.view')
                                 </a>
                             </td>
@@ -79,7 +85,7 @@
         </div>
     </div>
     <div class="flex justify-center md:justify-between mt-6 mb-6">
-        @if($credits->total() > 0)
+        @if ($credits->total() > 0)
             <span class="text-gray-700 text-sm hidden md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $credits->firstItem(), 'last' => $credits->lastItem(), 'total' => $credits->total()]) }}
             </span>

@@ -11,40 +11,46 @@
         </div>
     </div>
     <div class="align-middle inline-block min-w-full overflow-hidden rounded mt-4">
-        <table class="min-w-full shadow rounded border border-gray-200 payments-table">
+        <table class="min-w-full payments-table">
             <thead>
                 <tr>
-                    <th class="px-6 py-3 border-b border-gray-200 bg-primary text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                    <th
+                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
                         <span role="button" wire:click="sortBy('number')" class="cursor-pointer">
                             {{ ctrans('texts.number') }}
                         </span>
                     </th>
-                    <th class="px-6 py-3 border-b border-gray-200 bg-primary text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                    <th
+                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
                         <span role="button" wire:click="sortBy('date')" class="cursor-pointer">
                             {{ ctrans('texts.payment_date') }}
                         </span>
                     </th>
-                    <th class="px-6 py-3 border-b border-gray-200 bg-primary text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                    <th
+                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
                         <span role="button" wire:click="sortBy('type_id')" class="cursor-pointer">
                             {{ ctrans('texts.payment_type_id') }}
                         </span>
                     </th>
-                    <th class="px-6 py-3 border-b border-gray-200 bg-primary text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                    <th
+                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
                         <span role="button" wire:click="sortBy('amount')" class="cursor-pointer">
                             {{ ctrans('texts.amount') }}
                         </span>
                     </th>
-                    <th class="px-6 py-3 border-b border-gray-200 bg-primary text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                    <th
+                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
                         <span role="button" wire:click="sortBy('transaction_reference')" class="cursor-pointer">
                             {{ ctrans('texts.transaction_reference') }}
                         </span>
                     </th>
-                    <th class="px-6 py-3 border-b border-gray-200 bg-primary text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                    <th
+                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
                         <span role="button" wire:click="sortBy('status_id')" class="cursor-pointer">
                             {{ ctrans('texts.status') }}
                         </span>
                     </th>
-                    <th class="px-6 py-3 border-b border-gray-200 bg-primary"></th>
+                    <th class="px-6 py-3 border-b-2 border-gray-200"></th>
                 </tr>
             </thead>
             <tbody>
@@ -60,7 +66,10 @@
                             {{ $payment->translatedType() }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-gray-500">
-                            {!! \App\Utils\Number::formatMoney($payment->amount > 0 ? $payment->amount : $payment->credits->sum('pivot.amount'), $payment->client) !!}
+                            {!! \App\Utils\Number::formatMoney(
+                                $payment->amount > 0 ? $payment->amount : $payment->credits->sum('pivot.amount'),
+                                $payment->client,
+                            ) !!}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-gray-500">
                             {{ \Illuminate\Support\Str::limit($payment->transaction_reference, 35) }}
@@ -68,8 +77,10 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-gray-500">
                             {!! \App\Models\Payment::badgeForStatus($payment->status_id) !!}
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap flex items-center justify-end text-sm leading-5 font-medium">
-                            <a href="{{ route('client.payments.show', $payment->hashed_id) }}" class="text-blue-600 hover:text-indigo-900 focus:outline-none focus:underline">
+                        <td
+                            class="px-6 py-4 whitespace-nowrap flex items-center justify-end text-sm leading-5 font-medium">
+                            <a href="{{ route('client.payments.show', $payment->hashed_id) }}"
+                                class="text-blue-600 hover:text-indigo-900 focus:outline-none focus:underline">
                                 @lang('texts.view')
                             </a>
                         </td>
@@ -85,7 +96,7 @@
         </table>
     </div>
     <div class="flex justify-center md:justify-between mt-6 mb-6">
-        @if($payments->total() > 0)
+        @if ($payments->total() > 0)
             <span class="text-gray-700 text-sm hidden md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $payments->firstItem(), 'last' => $payments->lastItem(), 'total' => $payments->total()]) }}
             </span>
