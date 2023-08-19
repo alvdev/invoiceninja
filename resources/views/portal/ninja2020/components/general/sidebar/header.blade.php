@@ -17,12 +17,6 @@
 
         <div class="relative z-10 flex-shrink-0 flex flex-1 h-16 bg-white"
             xmlns:x-transition="http://www.w3.org/1999/xhtml">
-            <button @click.stop="sidebarOpen = true"
-                class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:bg-gray-100 focus:text-gray-600 md:hidden">
-                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-                </svg>
-            </button>
             <div class="flex-1 flex justify-between items-center">
                 <span class="text-4xl text-gray-900 font-bold uppercase" data-ref="meta-title">@yield('meta_title')</span>
                 <div class="flex items-center md:ml-6 md:mr-2">
@@ -92,11 +86,13 @@
                 </div>
             </div>
         </div>
-        <div class="burger"> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                class="bi bi-list" viewBox="0 0 16 16">
+        <button @click.stop="sidebarOpen = true" class="px-4 focus:outline-none focus:text-gray-600 md:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="currentColor" class="bi bi-list"
+                viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
                 </path>
-            </svg> </div>
+            </svg>
+        </button>
     </div>
 </nav>
