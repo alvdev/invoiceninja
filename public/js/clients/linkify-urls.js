@@ -120,8 +120,8 @@ function createHtmlElement(
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "htmlEscape": () => (/* binding */ htmlEscape),
-/* harmony export */   "htmlUnescape": () => (/* binding */ htmlUnescape)
+/* harmony export */   htmlEscape: () => (/* binding */ htmlEscape),
+/* harmony export */   htmlUnescape: () => (/* binding */ htmlUnescape)
 /* harmony export */ });
 const _htmlEscape = string => string
 	.replace(/&/g, '&amp;')
