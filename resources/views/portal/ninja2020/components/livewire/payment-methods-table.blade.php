@@ -118,7 +118,7 @@
                             <td class="px-6 py-4 whitespace-nowrap flex items-center justify-end text-sm leading-5 font-medium"
                                 data-cy="view-payment-method">
                                 <a href="{{ route('client.payment_methods.show', $payment_method->hashed_id) }}"
-                                    class="text-blue-600 hover:text-indigo-900 focus:outline-none focus:underline">
+                                    class="text-purple-700 hover:text-black focus:outline-none focus:underline">
                                     @lang('texts.view')
                                 </a>
                             </td>
