@@ -1,15 +1,6 @@
 <div>
     <div class="flex items-center justify-between">
         <div class="flex items-center">
-            <span class="hidden mr-2 text-sm md:block">{{ ctrans('texts.per_page') }}</span>
-            <select wire:model="per_page" class="py-1 text-sm form-select">
-                <option>5</option>
-                <option selected>10</option>
-                <option>15</option>
-                <option>20</option>
-            </select>
-        </div>
-        <div class="flex items-center">
             <div class="mr-3">
                 <input wire:model="status" value="{{ App\Models\Quote::STATUS_SENT }}" value="sent" type="checkbox"
                     class="cursor-pointer form-checkbox" id="sent-checkbox">
@@ -114,13 +105,22 @@
             </table>
         </div>
     </div>
-    <div class="flex justify-center mt-6 mb-6 md:justify-between">
+    <div class="flex justify-center items-end mt-6 mb-6 md:justify-between">
         @if ($quotes->total() > 0)
             <span class="hidden text-sm text-gray-700 md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $quotes->firstItem(), 'last' => $quotes->lastItem(), 'total' => $quotes->total()]) }}
             </span>
         @endif
         {{ $quotes->links('portal/ninja2020/vendor/pagination') }}
+        <div class="flex items-center">
+            <span class="hidden mr-2 text-sm md:block">{{ ctrans('texts.per_page') }}</span>
+            <select wire:model="per_page" class="py-1 text-sm form-select">
+                <option>5</option>
+                <option selected>10</option>
+                <option>15</option>
+                <option>20</option>
+            </select>
+        </div>
     </div>
 </div>
 
