@@ -9,7 +9,7 @@
     <script src="{{ asset('js/vendor/pdf.js/pdf.min.js') }}"></script>
 @endpush
 
-<div class="flex items-center justify-between mt-4">
+{{-- alvdev <div class="flex items-center justify-between mt-4">
     <section class="flex items-center">
         <div class="items-center" style="{{ $mobile ? '' : 'display: none' }}" id="pagination-button-container">
             <button class="input-label focus:outline-none hover:text-blue-600 transition ease-in-out duration-300"
@@ -81,7 +81,7 @@
             </div>
         </div>
     </section>
-</div>
+</div> --}}
 
 @if ($mobile)
     <div class="w-full h-full overflow-auto mt-4">
