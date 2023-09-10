@@ -1,6 +1,6 @@
 <div>
-    <div class="flex items-center gap-4 justify-between -mt-6 pb-4">
-        <div class="space-x-2 flex flex-row items-center overflow-x-auto inline-block">
+    <div class="flex gap-4 justify-between -mt-6 pb-4">
+        <div class="space-x-2 flex flex-row items-center overflow-x-auto inline-block pb-4">
             <button
                 class="button whitespace-nowrap border border-transparent hover:border-gray-600 {{ $tab === 'documents' ? 'border-gray-600' : '' }}"
                 wire:click="updateResources('documents')" />
@@ -50,7 +50,7 @@
             </button>
         </div>
 
-        <div class="flex items-center !ml-auto">
+        <div class="flex pb-8">
             <button
                 onclick="document.getElementById('multiple-downloads').submit(); setTimeout(() => this.disabled = true, 0); setTimeout(() => this.disabled = false, 5000);"
                 class="button button-primary bg-primary py-2 ml-2">
