@@ -1,63 +1,56 @@
 <div>
-    <div class="space-x-2 flex flex-row -mt-6 overflow-x-auto inline-block pb-4">
-        <button
-            class="button border border-transparent hover:border-gray-600 {{ $tab === 'documents' ? 'border-gray-600' : '' }}"
-            wire:click="updateResources('documents')" />
-        {{ ctrans('texts.my_documents') }}
-        </button>
+    <div class="flex items-center gap-4 justify-between -mt-6 pb-4">
+        <div class="space-x-2 flex flex-row items-center overflow-x-auto inline-block">
+            <button
+                class="button border border-transparent hover:border-gray-600 {{ $tab === 'documents' ? 'border-gray-600' : '' }}"
+                wire:click="updateResources('documents')" />
+            {{ ctrans('texts.my_documents') }}
+            </button>
 
-        <button
-            class="button border border-transparent hover:border-gray-600 {{ $tab === 'credits' ? 'border-gray-600' : '' }}"ž
-            wire:click="updateResources('credits')" />
-        {{ ctrans('texts.credits') }}
-        </button>
+            <button
+                class="button border border-transparent hover:border-gray-600 {{ $tab === 'credits' ? 'border-gray-600' : '' }}"ž
+                wire:click="updateResources('credits')" />
+            {{ ctrans('texts.credits') }}
+            </button>
 
-        <button
-            class="button border border-transparent hover:border-gray-600 {{ $tab === 'invoices' ? 'border-gray-600' : '' }}"ž
-            wire:click="updateResources('invoices')" />
-        {{ ctrans('texts.invoices') }}
-        </button>
+            <button
+                class="button border border-transparent hover:border-gray-600 {{ $tab === 'invoices' ? 'border-gray-600' : '' }}"ž
+                wire:click="updateResources('invoices')" />
+            {{ ctrans('texts.invoices') }}
+            </button>
 
-        <button
-            class="button border border-transparent hover:border-gray-600 {{ $tab === 'payments' ? 'border-gray-600' : '' }}"ž
-            wire:click="updateResources('payments')" />
-        {{ ctrans('texts.payments') }}
-        </button>
+            <button
+                class="button border border-transparent hover:border-gray-600 {{ $tab === 'payments' ? 'border-gray-600' : '' }}"ž
+                wire:click="updateResources('payments')" />
+            {{ ctrans('texts.payments') }}
+            </button>
 
-        <button
-            class="button border border-transparent hover:border-gray-600 {{ $tab === 'projects' ? 'border-gray-600' : '' }}"ž
-            wire:click="updateResources('projects')" />
-        {{ ctrans('texts.projects') }}
-        </button>
+            <button
+                class="button border border-transparent hover:border-gray-600 {{ $tab === 'projects' ? 'border-gray-600' : '' }}"ž
+                wire:click="updateResources('projects')" />
+            {{ ctrans('texts.projects') }}
+            </button>
 
-        <button
-            class="button border border-transparent hover:border-gray-600 {{ $tab === 'quotes' ? 'border-gray-600' : '' }}"ž
-            wire:click="updateResources('quotes')" />
-        {{ ctrans('texts.quotes') }}
-        </button>
+            <button
+                class="button border border-transparent hover:border-gray-600 {{ $tab === 'quotes' ? 'border-gray-600' : '' }}"ž
+                wire:click="updateResources('quotes')" />
+            {{ ctrans('texts.quotes') }}
+            </button>
 
-        <button
-            class="button border border-transparent hover:border-gray-600 {{ $tab === 'recurringInvoices' ? 'border-gray-600' : '' }}"ž
-            wire:click="updateResources('recurringInvoices')" />
-        {{ ctrans('texts.recurring_invoices') }}
-        </button>
+            <button
+                class="button border border-transparent hover:border-gray-600 {{ $tab === 'recurringInvoices' ? 'border-gray-600' : '' }}"ž
+                wire:click="updateResources('recurringInvoices')" />
+            {{ ctrans('texts.recurring_invoices') }}
+            </button>
 
-        <button
-            class="button border border-transparent hover:border-gray-600 {{ $tab === 'tasks' ? 'border-gray-600' : '' }}"ž
-            wire:click="updateResources('tasks')" />
-        {{ ctrans('texts.tasks') }}
-        </button>
-    </div>
+            <button
+                class="button border border-transparent hover:border-gray-600 {{ $tab === 'tasks' ? 'border-gray-600' : '' }}"ž
+                wire:click="updateResources('tasks')" />
+            {{ ctrans('texts.tasks') }}
+            </button>
+        </div>
 
-    <div class="flex items-center justify-between mt-6">
-        <div class="flex items-center">
-            <span class="mr-2 text-sm hidden md:block">{{ ctrans('texts.per_page') }}</span>
-            <select wire:model="per_page" class="form-select py-1 text-sm">
-                <option>5</option>
-                <option selected>10</option>
-                <option>15</option>
-                <option>20</option>
-            </select>
+        <div class="flex items-center !ml-auto">
             <button
                 onclick="document.getElementById('multiple-downloads').submit(); setTimeout(() => this.disabled = true, 0); setTimeout(() => this.disabled = false, 5000);"
                 class="button button-primary bg-primary py-2 ml-2">
@@ -74,6 +67,7 @@
             </button>
         </div>
     </div>
+
     <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div class="align-middle inline-block min-w-full overflow-hidden rounded">
             <table class="min-w-full mt-4 credits-table">
@@ -147,12 +141,23 @@
             </table>
         </div>
     </div>
-    <div class="flex justify-center md:justify-between mt-6 mb-6">
+    <div class="flex justify-center items-end md:justify-between mt-6 mb-6">
         @if ($documents->total() > 0)
             <span class="text-gray-700 text-sm hidden md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $documents->firstItem(), 'last' => $documents->lastItem(), 'total' => $documents->total()]) }}
             </span>
         @endif
         {{ $documents->links('portal/ninja2020/vendor/pagination') }}
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="mr-2 text-sm hidden md:block">{{ ctrans('texts.per_page') }}</span>
+                <select wire:model="per_page" class="form-select py-1 text-sm">
+                    <option>5</option>
+                    <option selected>10</option>
+                    <option>15</option>
+                    <option>20</option>
+                </select>
+            </div>
+        </div>
     </div>
 </div>
