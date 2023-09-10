@@ -14,14 +14,22 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
+                mont: ['Mont', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 gray: colors.gray,
             },
+            minWidth: {
+                '1/2': '50%',
+            },
         },
     },
-    variants: {},
+    variants: {
+        extend: {
+            ringWidth: ['hover', 'active'],
+            ringColor: ['hover', 'active'],
+        },
+    },
     plugins: [
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/forms'),
