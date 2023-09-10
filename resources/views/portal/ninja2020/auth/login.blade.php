@@ -7,84 +7,82 @@
 @endcomponent
 
 @section('body')
-    <div class="grid lg:grid-cols-3 mx-6 md:mx-0">
-        @if($account && !$account->isPaid())
-            <div class="hidden lg:block col-span-1 bg-red-100 h-screen">
+    <div class="grid lg:grid-cols-2 h-screen">
+        @if ($account && !$account->isPaid())
+            <div class="bg-black p-8 text-center relative overflow-hidden">
+                <div class="flex justify-center items-center h-full sm:text-2xl md:text-3xl text-white "
+                    style="text-wrap: balance">Solo se llega más rápido pero acompañado se llega más lejos
+                </div>
                 <img src="{{ asset('images/client-portal-new-image.jpg') }}"
-                     class="w-full h-screen object-cover"
-                     alt="Background image">
+                    class="w-full h-screen object-cover absolute top-0 left-0 opacity-10" alt="Background image">
             </div>
         @endif
 
-        <div class="{{ $account && !$account->isPaid() ? 'col-span-2' : 'col-span-3' }} h-screen flex">
-            <div class="m-auto md:w-1/2 lg:w-1/4">
-                @if($account && !$account->isPaid())
-                    <div>
-                        <img src="{{ asset('images/invoiceninja-black-logo-2.png') }}"
-                             class="border-b border-gray-100 h-18 pb-4" alt="Invoice Ninja logo">
+        <div class="flex flex-col gap-8 justify-center items-center">
+            <div>
+                <img src="{{ $company->present()->logo() }}" class="mx-auto w-20 h-auto"
+                    alt="{{ $company->present()->name() }} logo">
+            </div>
+
+            <div class="flex flex-col w-full px-8 sm:px-24">
+                <h1 class="text-center text-4xl font-bold">{{ ctrans('texts.client_portal') }}</h1>
+
+                <form action="{{ route('client.login') }}" method="post" class="mt-16 flex flex-col gap-8">
+                    @csrf
+                    <div class="flex flex-col relative">
+                        <label for="email"
+                            class="absolute top-2 left-4 text-gray-500 text-sm">{{ ctrans('texts.email_address') }}</label>
+                        <input type="email" name="email" id="email"
+                            class="w-full bg-gray-200 border-0 p-4 pt-8 transition duration-200 focus:outline-none focus:ring-4 focus:ring-purple-300"
+                            value="{{ old('email') }}" autofocus>
+                        @error('email')
+                            <div class="text-red-700 text-sm font-semibold mt-2">
+                                ▲ {{ $message }}
+                            </div>
+                        @enderror
                     </div>
-                @elseif(isset($company) && !is_null($company))
-                    <div>
-                        <img src="{{ $company->present()->logo()  }}"
-                             class="mx-auto border-b border-gray-100 h-18 pb-4" alt="{{ $company->present()->name() }} logo">
+                    <div class="flex flex-col relative">
+                        <div class="absolute top-2 left-4 right-4 text-gray-500 text-sm flex items-center justify-between">
+                            <label for="password" class="input-label">{{ ctrans('texts.password') }}</label>
+                            <a class="text-xs text-purple-700 hover:text-black ease-in duration-100"
+                                href="{{ route('client.password.request') }}">{{ trans('texts.forgot_password') }}</a>
+                        </div>
+                        @if (isset($company) && !is_null($company))
+                            <input type="hidden" name="company_key" value="{{ $company->company_key }}">
+                        @endif
+                        <input type="password" name="password" id="password"
+                            class="w-full bg-gray-200 border-0 p-4 pt-8 transition duration-200 focus:outline-none focus:ring-4 focus:ring-purple-300"
+                            autofocus>
+                        @error('password')
+                            <div class="text-red-700 text-sm font-semibold mt-2">
+                                ▲ {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="mt-4 text-center group">
+                        {{-- Tailwind 2 does not support "group" utility --}}
+                        <button id="loginBtn"
+                            class="min-w-1/2 text-center group-hover:border-4 text-white bg-black py-4 px-12 inline-flex justify-center gap-2 ring-0 rounded-full hover:ring hover:ring-black transition-all duration-300 scale-75">
+                            {{ trans('texts.login') }}
+                            <span class="relative right-0 top-[1px] duration-300 group-hover:-right-2"> ➝ </span>
+                        </button>
+                    </div>
+                </form>
+
+                @if (!is_null($company) && $company->client_can_register)
+                    <div class="mt-5 text-center">
+                        <a class="button-link text-sm"
+                            href="{{ route('client.register') }}">{{ ctrans('texts.register_label') }}</a>
                     </div>
                 @endif
 
-                <div class="flex flex-col">
-                    <h1 class="text-center text-3xl">{{ ctrans('texts.client_portal') }}</h1>
-                    <form action="{{ route('client.login') }}" method="post" class="mt-6">
-                        @csrf
-                        <div class="flex flex-col">
-                            <label for="email" class="input-label">{{ ctrans('texts.email_address') }}</label>
-                            <input type="email" name="email" id="email"
-                                   class="input"
-                                   value="{{ old('email') }}"
-                                   autofocus>
-                            @error('email')
-                            <div class="validation validation-fail">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="flex flex-col mt-4">
-                            <div class="flex justify-between items-center">
-                                <label for="password" class="input-label">{{ ctrans('texts.password') }}</label>
-                                <a class="text-xs text-gray-600 hover:text-gray-800 ease-in duration-100"
-                                   href="{{ route('client.password.request') }}">{{ trans('texts.forgot_password') }}</a>
-                            </div>
-                            @if(isset($company) && !is_null($company))
-                            <input type="hidden" name="company_key" value="{{$company->company_key}}">
-                            @endif
-                            <input type="password" name="password" id="password"
-                                   class="input"
-                                   autofocus>
-                            @error('password')
-                            <div class="validation validation-fail">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mt-5">
-                            <button id="loginBtn" class="button button-primary button-block bg-blue-600">
-                                {{ trans('texts.login') }}
-                            </button>
-                        </div>
-                    </form>
-
-                    @if(!is_null($company) && $company->client_can_register)
-                        <div class="mt-5 text-center">
-                            <a class="button-link text-sm" href="{{ route('client.register') }}">{{ ctrans('texts.register_label') }}</a>
-                        </div>
-                    @endif
-
-                    @if(!is_null($company) && !empty($company->present()->website()))
-                        <div class="mt-5 text-center">
-                            <a class="button-link text-sm" href="{{ $company->present()->website() }}">
-                                {{ ctrans('texts.back_to', ['url' => parse_url($company->present()->website())['host'] ?? $company->present()->website() ]) }}
-                            </a>
-                        </div>
-                    @endif
-                </div>
+                @if (!is_null($company) && !empty($company->present()->website()))
+                    <div class="mt-5 text-center">
+                        <a class="button-link text-sm" href="{{ $company->present()->website() }}">
+                            {{ ctrans('texts.back_to', ['url' => parse_url($company->present()->website())['host'] ?? $company->present()->website()]) }}
+                        </a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
