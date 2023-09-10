@@ -1,15 +1,4 @@
 <div>
-    <div class="flex items-center justify-between">
-        <div class="flex items-center">
-            <span class="mr-2 text-sm hidden md:block">{{ ctrans('texts.per_page') }}</span>
-            <select wire:model="per_page" class="form-select py-1 text-sm">
-                <option>5</option>
-                <option selected>10</option>
-                <option>15</option>
-                <option>20</option>
-            </select>
-        </div>
-    </div>
     <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div class="align-middle inline-block min-w-full overflow-hidden rounded">
             <table class="min-w-full mt-4 credits-table">
@@ -96,12 +85,21 @@
         </div>
     </div>
 
-    <div class="flex justify-center md:justify-between mt-6 mb-6">
+    <div class="flex justify-center items-end md:justify-between mt-6 mb-6">
         @if ($recurring_invoices->total() > 0)
             <span class="text-gray-700 text-sm hidden md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $recurring_invoices->firstItem(), 'last' => $recurring_invoices->lastItem(), 'total' => $recurring_invoices->total()]) }}
             </span>
         @endif
         {{ $recurring_invoices->links('portal/ninja2020/vendor/pagination') }}
+        <div class="flex items-center">
+            <span class="mr-2 text-sm hidden md:block">{{ ctrans('texts.per_page') }}</span>
+            <select wire:model="per_page" class="form-select py-1 text-sm">
+                <option>5</option>
+                <option selected>10</option>
+                <option>15</option>
+                <option>20</option>
+            </select>
+        </div>
     </div>
 </div>
