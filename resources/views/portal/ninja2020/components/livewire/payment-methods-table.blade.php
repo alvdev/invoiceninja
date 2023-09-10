@@ -1,14 +1,5 @@
 <div>
     <div class="flex items-center justify-between">
-        <div class="flex items-center">
-            <span class="mr-2 text-sm hidden md:block">{{ ctrans('texts.per_page') }}</span>
-            <select wire:model="per_page" class="form-select py-1 text-sm">
-                <option>5</option>
-                <option selected>10</option>
-                <option>15</option>
-                <option>20</option>
-            </select>
-        </div>
         <div class="relative" x-data="{ open: false }" x-on:click.away="open = false">
             <!-- Add payment method button -->
             @if ($client->getCreditCardGateway() || $client->getBankTransferGateway())
@@ -134,13 +125,21 @@
             </table>
         </div>
     </div>
-    <div class="flex justify-center md:justify-between mt-6 mb-6">
+    <div class="flex justify-center items-end md:justify-between mt-6 mb-6">
         @if ($payment_methods->total() > 0)
             <span class="text-gray-700 text-sm hidden md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $payment_methods->firstItem(), 'last' => $payment_methods->lastItem(), 'total' => $payment_methods->total()]) }}
             </span>
         @endif
-
         {{ $payment_methods->links('portal/ninja2020/vendor/pagination') }}
+        <div class="flex items-center">
+            <span class="mr-2 text-sm hidden md:block">{{ ctrans('texts.per_page') }}</span>
+            <select wire:model="per_page" class="form-select py-1 text-sm">
+                <option>5</option>
+                <option selected>10</option>
+                <option>15</option>
+                <option>20</option>
+            </select>
+        </div>
     </div>
 </div>
