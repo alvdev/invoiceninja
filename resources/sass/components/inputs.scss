@@ -15,9 +15,23 @@
 }
 
 .form-checkbox {
-    @apply border border-gray-300 rounded cursor-pointer;
+    @apply border-none bg-gray-300 rounded cursor-pointer;
+}
+
+[type='checkbox']:checked,
+[type='checkbox']:focus
+[type='checkbox']:checked:hover,
+[type='checkbox']:checked:focus,
+[type='checkbox']:focus-visible {
+@apply ring-black transition-all duration-300;
+background-color: black !important;
+}
+
+[type='checkbox']:focus {
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 .form-select {
-    @apply border border-gray-300;
+    @apply border-none bg-gray-200 rounded cursor-pointer;
 }
