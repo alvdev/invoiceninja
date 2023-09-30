@@ -5,31 +5,31 @@
                 <thead>
                     <tr>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('frequency_id')" class="cursor-pointer">
                                 {{ ctrans('texts.frequency') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('date')" class="cursor-pointer">
                                 {{ ctrans('texts.start_date') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('next_send_date')" class="cursor-pointer">
                                 {{ ctrans('texts.next_send_date') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('remaining_cycles')" class="cursor-pointer">
                                 {{ ctrans('texts.cycles_remaining') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('amount')" class="cursor-pointer">
                                 {{ ctrans('texts.amount') }}
                             </span>
@@ -77,7 +77,7 @@
             </table>
         </div>
     </div>
-    <div class="flex justify-center items-end md:justify-between mt-6 mb-6">
+    <div class="flex justify-center items-end md:justify-between mt-16 mb-6">
         @if ($invoices->total() > 0)
             <span class="text-gray-700 text-sm hidden md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $invoices->firstItem(), 'last' => $invoices->lastItem(), 'total' => $invoices->total()]) }}

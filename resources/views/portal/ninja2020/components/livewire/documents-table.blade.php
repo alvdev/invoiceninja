@@ -74,32 +74,32 @@
                 <thead>
                     <tr>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider" />
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider" />
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('name')" class="cursor-pointer">
                                 {{ ctrans('texts.name') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('size')" class="cursor-pointer">
                                 {{ ctrans('texts.size') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             {{ ctrans('texts.download') }}
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($documents as $document)
                         <tr class="bg-white group hover:bg-gray-100">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-gray-500">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-gray-500 w-14">
                                 <input type="checkbox" class="form-checkbox cursor-pointer"
                                     onchange="appendToElement('multiple-downloads', '{{ $document->hashed_id }}')" />
                             </td>
@@ -141,7 +141,7 @@
             </table>
         </div>
     </div>
-    <div class="flex justify-center items-end flex-col-reverse md:flex-row md:justify-between mt-6 mb-6">
+    <div class="flex justify-center items-end flex-col-reverse md:flex-row md:justify-between mt-16 mb-6">
         @if ($documents->total() > 0)
             <span class="text-gray-700 text-sm hidden md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $documents->firstItem(), 'last' => $documents->lastItem(), 'total' => $documents->total()]) }}

@@ -4,37 +4,37 @@
             <thead>
                 <tr>
                     <th
-                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                         <span role="button" wire:click="sortBy('number')" class="cursor-pointer">
                             {{ ctrans('texts.number') }}
                         </span>
                     </th>
                     <th
-                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                         <span role="button" wire:click="sortBy('date')" class="cursor-pointer">
                             {{ ctrans('texts.payment_date') }}
                         </span>
                     </th>
                     <th
-                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                         <span role="button" wire:click="sortBy('type_id')" class="cursor-pointer">
                             {{ ctrans('texts.payment_type_id') }}
                         </span>
                     </th>
                     <th
-                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                         <span role="button" wire:click="sortBy('amount')" class="cursor-pointer">
                             {{ ctrans('texts.amount') }}
                         </span>
                     </th>
                     <th
-                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                         <span role="button" wire:click="sortBy('transaction_reference')" class="cursor-pointer">
                             {{ ctrans('texts.transaction_reference') }}
                         </span>
                     </th>
                     <th
-                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                        class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                         <span role="button" wire:click="sortBy('status_id')" class="cursor-pointer">
                             {{ ctrans('texts.status') }}
                         </span>
@@ -84,7 +84,7 @@
             </tbody>
         </table>
     </div>
-    <div class="flex justify-center items-end md:justify-between mt-6 mb-6">
+    <div class="flex justify-center items-end md:justify-between mt-16 mb-6">
         @if ($payments->total() > 0)
             <span class="text-gray-700 text-sm hidden md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $payments->firstItem(), 'last' => $payments->lastItem(), 'total' => $payments->total()]) }}

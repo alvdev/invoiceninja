@@ -1,17 +1,17 @@
 <div>
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between mb-4">
         <div class="flex items-center">
-            <div class="mr-3">
+            <div class="mr-6 inline-flex gap-2">
                 <input wire:model="status" value="{{ App\Models\Quote::STATUS_SENT }}" value="sent" type="checkbox"
                     class="cursor-pointer form-checkbox" id="sent-checkbox">
                 <label for="sent-checkbox" class="text-sm cursor-pointer">{{ ctrans('texts.status_pending') }}</label>
             </div>
-            <div class="mr-3">
+            <div class="mr-6 inline-flex gap-2">
                 <input wire:model="status" value="{{ App\Models\Quote::STATUS_APPROVED }}" value="approved"
                     type="checkbox" class="cursor-pointer form-checkbox" id="approved-checkbox">
                 <label for="approved-checkbox" class="text-sm cursor-pointer">{{ ctrans('texts.approved') }}</label>
             </div>
-            <div class="mr-3">
+            <div class="mr-6 inline-flex gap-2">
                 <input wire:model="status" value="{{ App\Models\Quote::STATUS_EXPIRED }}" value="expired"
                     type="checkbox" class="cursor-pointer form-checkbox" id="expired-checkbox">
                 <label for="expired-checkbox" class="text-sm cursor-pointer">{{ ctrans('texts.expired') }}</label>
@@ -24,37 +24,38 @@
                 <thead>
                     <tr>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200 w-14">
                             <label>
-                                <input type="checkbox" class="form-check form-check-parent">
+                                <input type="checkbox"
+                                    class="form-check form-check-parent cursor-pointer form-checkbox">
                             </label>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('number')" class="cursor-pointer">
                                 {{ ctrans('texts.quote_number') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('date')" class="cursor-pointer">
                                 {{ ctrans('texts.quote_date') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('balance')" class="cursor-pointer">
                                 {{ ctrans('texts.amount') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('date')" class="cursor-pointer">
                                 {{ ctrans('texts.valid_until') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('status_id')" class="cursor-pointer">
                                 {{ ctrans('texts.quote_status') }}
                             </span>
@@ -67,7 +68,8 @@
                         <tr class="bg-white group hover:bg-gray-100">
                             <td class="px-6 py-4 text-sm font-medium leading-5 text-gray-900 whitespace-nowrap">
                                 <label>
-                                    <input type="checkbox" class="form-check form-check-child"
+                                    <input type="checkbox"
+                                        class="form-check form-check-child cursor-pointer form-checkbox"
                                         data-value="{{ $quote->hashed_id }}">
                                 </label>
                             </td>
@@ -105,7 +107,7 @@
             </table>
         </div>
     </div>
-    <div class="flex justify-center items-end mt-6 mb-6 md:justify-between">
+    <div class="flex justify-center items-end mt-16 mb-6 md:justify-between">
         @if ($quotes->total() > 0)
             <span class="hidden text-sm text-gray-700 md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $quotes->firstItem(), 'last' => $quotes->lastItem(), 'total' => $quotes->total()]) }}

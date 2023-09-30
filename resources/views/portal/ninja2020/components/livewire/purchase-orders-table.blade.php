@@ -28,43 +28,43 @@
                 <thead>
                     <tr>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <label>
                                 <input type="checkbox" class="form-check form-check-parent">
                             </label>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('number')" class="cursor-pointer">
                                 {{ ctrans('texts.purchase_order_number_short') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('date')" class="cursor-pointer">
                                 {{ ctrans('texts.purchase_order_date') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('amount')" class="cursor-pointer">
                                 {{ ctrans('texts.amount') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('balance')" class="cursor-pointer">
                                 {{ ctrans('texts.balance') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('due_date')" class="cursor-pointer">
                                 {{ ctrans('texts.due_date') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('status_id')" class="cursor-pointer">
                                 {{ ctrans('texts.status') }}
                             </span>

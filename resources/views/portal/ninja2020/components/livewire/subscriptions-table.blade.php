@@ -5,43 +5,43 @@
                 <thead>
                     <tr>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <p role="button" wire:click="sortBy('status_id')" class="cursor-pointer">
                                 {{ ctrans('texts.status') }}
                             </p>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <p role="button" wire:click="sortBy('number')" class="cursor-pointer">
                                 {{ ctrans('texts.subscription') }}
                             </p>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <p role="button" wire:click="sortBy('number')" class="cursor-pointer">
                                 {{ ctrans('texts.frequency') }}
                             </p>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <p role="button" wire:click="sortBy('amount')" class="cursor-pointer">
                                 {{ ctrans('texts.amount') }}
                             </p>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <p role="button" wire:click="sortBy('auto_bill_enabled')" class="cursor-pointer">
                                 {{ ctrans('texts.auto_bill') }}
                             </p>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <p role="button" wire:click="sortBy('next_send_date')" class="cursor-pointer">
                                 {{ ctrans('texts.next_send_date') }}
                             </p>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                         </th>
                     </tr>
                 </thead>
@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    <div class="flex justify-center items-end md:justify-between mt-6 mb-6">
+    <div class="flex justify-center items-end md:justify-between mt-16 mb-6">
         @if ($recurring_invoices->total() > 0)
             <span class="text-gray-700 text-sm hidden md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $recurring_invoices->firstItem(), 'last' => $recurring_invoices->lastItem(), 'total' => $recurring_invoices->total()]) }}

@@ -9,7 +9,7 @@
         <div class="h-0 flex-1 flex flex-col justify-center overflow-y-auto z-0 pr-8 pt-8">
             <nav class="pb-4 pt-0 bg-white uppercase fixed">
                 @foreach ($sidebar as $row)
-                    <a class="group flex items-center p-4 text-sm leading-5 font-medium hover:font-semibold focus:outline-none focus:bg-primary-darken transition ease-in-out duration-150 {{ isActive($row['url'], true) ? 'border-r-4 border-black font-bold' : 'text-gray-900' }}"
+                    <a class="group flex items-center p-4 text-sm leading-5 font-medium hover:font-semibold focus:outline-none focus:bg-primary-darken transition ease-in-out duration-150 {{ isActive($row['url'], true) ? 'border-r-4 border-black font-semibold' : 'text-gray-900' }}"
                         href="{{ route($row['url']) }}">
                         @if (isActive($row['url'], true))
                             <img src="{{ asset('images/svg/dark/' . $row['icon'] . '.svg') }}"

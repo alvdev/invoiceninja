@@ -45,31 +45,31 @@
                 <thead>
                     <tr>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('created_at')" class="cursor-pointer">
                                 {{ ctrans('texts.created_at') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('gateway_type_id')" class="cursor-pointer">
                                 {{ ctrans('texts.payment_type_id') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             {{ ctrans('texts.type') }}
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             {{ ctrans('texts.expires') }}
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             {{ ctrans('texts.card_number') }}
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             {{ ctrans('texts.default') }}
                         </th>
                         <th class="px-6 py-3 border-b-2 border-gray-200"></th>
@@ -125,7 +125,7 @@
             </table>
         </div>
     </div>
-    <div class="flex justify-center items-end md:justify-between mt-6 mb-6">
+    <div class="flex justify-center items-end md:justify-between mt-16 mb-6">
         @if ($payment_methods->total() > 0)
             <span class="text-gray-700 text-sm hidden md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $payment_methods->firstItem(), 'last' => $payment_methods->lastItem(), 'total' => $payment_methods->total()]) }}

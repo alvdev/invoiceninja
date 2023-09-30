@@ -16,25 +16,25 @@
                 <thead>
                     <tr>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('description')" class="cursor-pointer">
                                 {{ ctrans('texts.description') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('description')" class="cursor-pointer">
                                 {{ ctrans('texts.project') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <span role="button" wire:click="sortBy('status_id')" class="cursor-pointer">
                                 {{ ctrans('texts.status') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-bold uppercase tracking-wider">
+                            class="px-6 py-3 border-b-2 border-gray-200 text-left text-xs leading-4 font-semibold uppercase tracking-wider">
                             <span role="button" class="cursor-pointer">
                                 {{ ctrans('texts.duration') }}
                             </span>
@@ -68,7 +68,7 @@
             </table>
         </div>
     </div>
-    <div class="flex justify-center md:justify-between mt-6 mb-6">
+    <div class="flex justify-center md:justify-between mt-16 mb-6">
         @if ($tasks->total() > 0)
             <span class="text-gray-700 text-sm hidden md:block">
                 {{ ctrans('texts.showing_x_of', ['first' => $tasks->firstItem(), 'last' => $tasks->lastItem(), 'total' => $tasks->total()]) }}

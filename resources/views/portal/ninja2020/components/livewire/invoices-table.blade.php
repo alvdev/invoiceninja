@@ -1,17 +1,17 @@
 <div>
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between mb-4">
         <div class="flex items-center">
-            <div class="mr-3">
+            <div class="mr-6 inline-flex gap-2">
                 <input wire:model="status" value="paid" type="checkbox" class="cursor-pointer form-checkbox"
                     id="paid-checkbox">
                 <label for="paid-checkbox" class="text-sm cursor-pointer">{{ ctrans('texts.status_paid') }}</label>
             </div>
-            <div class="mr-3">
+            <div class="mr-6 inline-flex gap-2">
                 <input wire:model="status" value="unpaid" type="checkbox" class="cursor-pointer form-checkbox"
                     id="unpaid-checkbox">
                 <label for="unpaid-checkbox" class="text-sm cursor-pointer">{{ ctrans('texts.status_unpaid') }}</label>
             </div>
-            <div class="mr-3">
+            <div class="mr-6 inline-flex gap-2">
                 <input wire:model="status" value="overdue" type="checkbox" class="cursor-pointer form-checkbox"
                     id="overdue-checkbox">
                 <label for="overdue-checkbox" class="text-sm cursor-pointer">{{ ctrans('texts.past_due') }}</label>
@@ -24,49 +24,50 @@
                 <thead>
                     <tr>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200 w-14">
                             <label>
-                                <input type="checkbox" class="form-check form-check-parent">
+                                <input type="checkbox"
+                                    class="form-check form-check-parent cursor-pointer form-checkbox">
                             </label>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('number')" class="cursor-pointer">
                                 {{ ctrans('texts.invoice_number') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('number')" class="cursor-pointer">
                                 {{ ctrans('texts.po_number') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('date')" class="cursor-pointer">
                                 {{ ctrans('texts.invoice_date') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('amount')" class="cursor-pointer">
                                 {{ ctrans('texts.amount') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('balance')" class="cursor-pointer">
                                 {{ ctrans('texts.balance') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('due_date')" class="cursor-pointer">
                                 {{ ctrans('texts.due_date') }}
                             </span>
                         </th>
                         <th
-                            class="px-6 py-3 text-xs font-bold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
+                            class="px-6 py-3 text-xs font-semibold leading-4 tracking-wider text-left uppercase border-b-2 border-gray-200">
                             <span role="button" wire:click="sortBy('status_id')" class="cursor-pointer">
                                 {{ ctrans('texts.status') }}
                             </span>
@@ -79,7 +80,8 @@
                         <tr class="bg-white group hover:bg-gray-100">
                             <td class="px-6 py-4 text-sm font-medium leading-5 text-gray-900 whitespace-nowrap">
                                 <label>
-                                    <input type="checkbox" class="form-check form-check-child"
+                                    <input type="checkbox"
+                                        class="form-check form-check-child cursor-pointer form-checkbox"
                                         data-value="{{ $invoice->hashed_id }}">
                                 </label>
                             </td>
@@ -135,7 +137,7 @@
             </table>
         </div>
     </div>
-    <div class="flex justify-center items-center mt-6 mb-6 md:justify-between">
+    <div class="flex justify-center items-center mt-16 mb-6 md:justify-between">
         @if ($invoices && $invoices->total() > 0)
             <span class="hidden text-sm text-gray-700 md:block mr-2">
                 {{ ctrans('texts.showing_x_of', ['first' => $invoices->firstItem(), 'last' => $invoices->lastItem(), 'total' => $invoices->total()]) }}
