@@ -1,5 +1,5 @@
 .button {
-    @apply rounded py-3 px-4 text-sm leading-4 transition duration-150 ease-in-out;
+    @apply rounded-full py-3 px-6 text-sm leading-4 transition-all duration-150;
 }
 
 button:disabled {
@@ -10,7 +10,7 @@ button:disabled {
     @apply text-white;
 
     &:hover {
-        @apply font-semibold;
+        scale: 1.05;
     }
 }
 

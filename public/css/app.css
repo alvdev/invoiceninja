@@ -2123,21 +2123,18 @@ body {
 }
 
 .button {
-  border-radius: 0.25rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  border-radius: 9999px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   line-height: 1rem;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   transition-duration: 150ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 button:disabled {
@@ -2151,7 +2148,7 @@ button:disabled {
 }
 
 .button-primary:hover {
-  font-weight: 600;
+  scale: 1.05;
 }
 
 .button-block {
@@ -2476,21 +2473,18 @@ button:disabled {
 }
 
 .dataTables_paginate .paginate_button {
-  border-radius: 0.25rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  border-radius: 9999px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   line-height: 1rem;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   transition-duration: 150ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   margin-right: 0.25rem !important;
   cursor: pointer !important;
   border-radius: 0.25rem !important;
