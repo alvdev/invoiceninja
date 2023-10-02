@@ -2,14 +2,14 @@
 @section('meta_title', $title)
 
 @section('body')
-    <div class="grid lg:grid-cols-2 h-screen">
+    <div class="grid md:grid-cols-2 h-screen">
         @if ($account && !$account->isPaid())
-            <div class="bg-black text-center relative overflow-hidden">
-                <div class="flex justify-center items-center h-full p-8 fixed lg:w-1/2 sm:text-2xl md:text-3xl text-white"
+            <div class="bg-black text-center relative overflow-hidden hidden md:flex">
+                <div class="flex justify-center items-center h-full p-8 fixed md:w-1/2 sm:text-2xl md:text-3xl text-white"
                     style="text-wrap: balance">Solo se llega más rápido pero acompañado se llega más lejos
                 </div>
                 <img src="{{ asset('images/client-portal-new-image.jpg') }}"
-                    class="lg:w-1/2 h-screen object-cover fixed top-0 left-0 opacity-10" alt="Background image"
+                    class="md:w-1/2 h-screen object-cover fixed top-0 left-0 opacity-10" alt="Background image"
                     alt="Background image">
             </div>
         @endif
