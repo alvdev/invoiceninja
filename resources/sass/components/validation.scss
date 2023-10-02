@@ -1,11 +1,11 @@
 .validation {
-    @apply border-l-2 mt-2 mb-1 px-3 bg-gray-100 py-1;
+    @apply inline-block px-3 py-2 text-xs text-gray-700;
 }
 
 .validation-fail {
-    @apply border-red-500 text-gray-700 text-sm;
+    @apply bg-red-700 text-white;
 }
 
 .validation-pass {
-    @apply border-green-500 text-gray-700 text-sm;
+    @apply bg-green-700 text-white;
 }
