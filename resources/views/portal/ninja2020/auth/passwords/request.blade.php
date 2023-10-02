@@ -4,8 +4,8 @@
 @section('body')
     <div class="grid lg:grid-cols-2 h-screen">
         @if ($account && !$account->isPaid())
-            <div class="bg-black p-8 text-center relative overflow-hidden">
-                <div class="flex justify-center items-center h-full sm:text-2xl md:text-3xl text-white"
+            <div class="bg-black text-center relative overflow-hidden">
+                <div class="flex justify-center items-center h-full p-8 fixed lg:w-1/2 sm:text-2xl md:text-3xl text-white"
                     style="text-wrap: balance">Solo se llega más rápido pero acompañado se llega más lejos
                 </div>
                 <img src="{{ asset('images/client-portal-new-image.jpg') }}"
