@@ -1,50 +1,50 @@
 <div>
     <div class="flex gap-4 justify-between -mt-6 pb-4">
-        <div class="space-x-2 flex flex-row items-center overflow-x-auto inline-block pb-4">
+        <div class="space-x-2 flex flex-row items-center overflow-x-auto pb-4">
             <button
-                class="button whitespace-nowrap border border-transparent hover:border-gray-600 {{ $tab === 'documents' ? 'border-gray-600' : '' }}"
+                class="button whitespace-nowrap rounded-none border border-transparent hover:border-gray-600 {{ $tab === 'documents' ? 'border-gray-900' : '' }}"
                 wire:click="updateResources('documents')" />
             {{ ctrans('texts.my_documents') }}
             </button>
 
             <button
-                class="button whitespace-nowrap border border-transparent hover:border-gray-600 {{ $tab === 'credits' ? 'border-gray-600' : '' }}"ž
+                class="button whitespace-nowrap rounded-none border border-transparent hover:border-gray-600 {{ $tab === 'credits' ? 'border-gray-900' : '' }}"ž
                 wire:click="updateResources('credits')" />
             {{ ctrans('texts.credits') }}
             </button>
 
             <button
-                class="button whitespace-nowrap border border-transparent hover:border-gray-600 {{ $tab === 'invoices' ? 'border-gray-600' : '' }}"ž
+                class="button whitespace-nowrap rounded-none border border-transparent hover:border-gray-600 {{ $tab === 'invoices' ? 'border-gray-900' : '' }}"ž
                 wire:click="updateResources('invoices')" />
             {{ ctrans('texts.invoices') }}
             </button>
 
             <button
-                class="button whitespace-nowrap border border-transparent hover:border-gray-600 {{ $tab === 'payments' ? 'border-gray-600' : '' }}"ž
+                class="button whitespace-nowrap rounded-none border border-transparent hover:border-gray-600 {{ $tab === 'payments' ? 'border-gray-900' : '' }}"ž
                 wire:click="updateResources('payments')" />
             {{ ctrans('texts.payments') }}
             </button>
 
             <button
-                class="button whitespace-nowrap border border-transparent hover:border-gray-600 {{ $tab === 'projects' ? 'border-gray-600' : '' }}"ž
+                class="button whitespace-nowrap rounded-none border border-transparent hover:border-gray-600 {{ $tab === 'projects' ? 'border-gray-900' : '' }}"ž
                 wire:click="updateResources('projects')" />
             {{ ctrans('texts.projects') }}
             </button>
 
             <button
-                class="button whitespace-nowrap border border-transparent hover:border-gray-600 {{ $tab === 'quotes' ? 'border-gray-600' : '' }}"ž
+                class="button whitespace-nowrap rounded-none border border-transparent hover:border-gray-600 {{ $tab === 'quotes' ? 'border-gray-900' : '' }}"ž
                 wire:click="updateResources('quotes')" />
             {{ ctrans('texts.quotes') }}
             </button>
 
             <button
-                class="button whitespace-nowrap border border-transparent hover:border-gray-600 {{ $tab === 'recurringInvoices' ? 'border-gray-600' : '' }}"ž
+                class="button whitespace-nowrap rounded-none border border-transparent hover:border-gray-600 {{ $tab === 'recurringInvoices' ? 'border-gray-900' : '' }}"ž
                 wire:click="updateResources('recurringInvoices')" />
             {{ ctrans('texts.recurring_invoices') }}
             </button>
 
             <button
-                class="button whitespace-nowrap border border-transparent hover:border-gray-600 {{ $tab === 'tasks' ? 'border-gray-600' : '' }}"ž
+                class="button whitespace-nowrap rounded-none border border-transparent hover:border-gray-600 {{ $tab === 'tasks' ? 'border-gray-900' : '' }}"ž
                 wire:click="updateResources('tasks')" />
             {{ ctrans('texts.tasks') }}
             </button>
