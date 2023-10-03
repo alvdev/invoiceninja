@@ -1,17 +1,24 @@
 .button {
     @apply rounded-full py-3 px-6 text-sm leading-4 transition-all duration-150;
+
+    &:hover {
+        scale: 1.05;
+    }
+    &.rounded-none:hover {
+        scale: 1;
+    }
 }
 
 button:disabled {
     @apply opacity-50 cursor-not-allowed;
 }
 
-.button-primary {
-    @apply text-white;
+.button-default {
+    @apply text-gray-900 border border-gray-900 bg-white #{!important};
+}
 
-    &:hover {
-        scale: 1.05;
-    }
+.button-primary {
+    @apply text-white bg-black #{!important};
 }
 
 .button-block {
@@ -38,10 +45,13 @@ button:disabled {
     @apply text-gray-700;
 
     &:hover {
-        @apply text-gray-900 underline;
+        @apply text-gray-900;
     }
 
     &:focus {
         @apply outline-none underline;
+    }
+    &.text-primary {
+        @apply border border-purple-700 rounded-full text-xs px-2 py-1 hover:border-black hover:bg-purple-700 hover:text-white transition-all;
     }
 }
