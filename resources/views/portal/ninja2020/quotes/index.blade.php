@@ -17,10 +17,10 @@
             @csrf
             <button type="submit"
                 onclick="setTimeout(() => this.disabled = true, 0); setTimeout(() => this.disabled = false, 5000); return true;"
-                class="button button-primary bg-primary" name="action"
+                class="button button-primary bg-primary mr-2" name="action"
                 value="download">{{ ctrans('texts.download') }}</button>
             <button type="submit" onclick="setTimeout(() => this.disabled = true, 0); return true;"
-                class="button button-primary bg-primary" name="action"
+                class="button button-default bg-primary" name="action"
                 value="approve">{{ ctrans('texts.approve') }}</button>
         </form>
     </div>
