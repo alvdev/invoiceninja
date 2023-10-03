@@ -44,7 +44,11 @@
     }
 
     .page-link:hover {
-        @apply text-gray-700 border-gray-300 #{!important};
+        @apply text-purple-600 border-purple-400 #{!important};
+    }
+
+    .page-item:first-child .page-link:hover {
+        @apply border-white #{!important};
     }
 
     .page-link:focus {
@@ -52,7 +56,7 @@
     }
 
     .active > span {
-        @apply text-blue-600 border-blue-600 #{!important};
+        @apply text-black font-semibold border-gray-400 #{!important};
     }
 
     // hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150

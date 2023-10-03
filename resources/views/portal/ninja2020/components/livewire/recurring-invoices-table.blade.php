@@ -61,7 +61,7 @@
                             <td
                                 class="px-6 py-4 whitespace-nowrap flex items-center justify-end text-sm leading-5 font-medium">
                                 <a href="{{ route('client.recurring_invoice.show', $invoice->hashed_id) }}"
-                                    class="text-purple-700 hover:text-black focus:outline-none focus:underline font-bold">
+                                    class="button-link text-primary">
                                     @lang('texts.view')
                                 </a>
                             </td>

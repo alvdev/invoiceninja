@@ -125,7 +125,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-gray-500">
                                 <a href="{{ route('client.documents.show', $document->hashed_id) }}"
-                                    class="button-link text-primary font-semibold">
+                                    class="button-link text-primary">
                                     {{ ctrans('texts.view') }}
                                 </a>
                             </td>

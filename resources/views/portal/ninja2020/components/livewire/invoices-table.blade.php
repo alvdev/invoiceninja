@@ -121,7 +121,7 @@
                                     </form>
                                 @endif
                                 <a href="{{ route('client.invoice.show', $invoice->hashed_id) }}"
-                                    class="button-link text-primary font-semibold">
+                                    class="button-link text-primary">
                                     {{ ctrans('texts.view') }}
                                 </a>
                             </td>
