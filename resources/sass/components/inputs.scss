@@ -2,7 +2,7 @@
     @apply items-center border border-gray-300 rounded mt-2 py-2 px-4 text-sm;
 
     &:focus {
-        @apply outline-none bg-gray-50;
+        @apply outline-none bg-purple-100 #{!important};
     }
 }
 
@@ -33,5 +33,5 @@ background-color: black !important;
 }
 
 .form-select {
-    @apply border-none bg-gray-200 rounded cursor-pointer;
+    @apply border-none bg-gray-200 cursor-pointer;
 }
