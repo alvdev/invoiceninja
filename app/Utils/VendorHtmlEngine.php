@@ -35,7 +35,7 @@ class VendorHtmlEngine
     use MakesDates;
     use AppSetup;
     use DesignCalculator;
-    
+
     public $entity;
 
     public $invitation;
@@ -65,9 +65,9 @@ class VendorHtmlEngine
         $this->company = $invitation->company;
 
         $this->contact = $invitation->contact->load('vendor');
-        
+
         $this->vendor = $this->contact->vendor->load('company', 'country');
-        
+
         if (!$this->vendor->currency_id) {
             $this->vendor->currency_id = $this->company->settings->currency_id;
             $this->vendor->save();
@@ -104,9 +104,9 @@ class VendorHtmlEngine
         }
     }
 
-    public function buildEntityDataArray() :array
+    public function buildEntityDataArray(): array
     {
-        if (! $this->vendor->currency()) {
+        if (!$this->vendor->currency()) {
             throw new Exception(debug_backtrace()[1]['function'], 1);
         }
 
@@ -130,8 +130,8 @@ class VendorHtmlEngine
 
         $data['$due_date'] = ['value' => $this->translateDate($this->entity->due_date, $this->company->date_format(), $this->vendor->locale()) ?: '&nbsp;', 'label' => ctrans('texts.due_date')];
 
-        $data['$partial_due_date'] = ['value' => $this->translateDate($this->entity->partial_due_date, $this->company->date_format(), $this->vendor->locale()) ?: '&nbsp;', 'label' => ctrans('texts.'.$this->entity_string.'_due_date')];
-        
+        $data['$partial_due_date'] = ['value' => $this->translateDate($this->entity->partial_due_date, $this->company->date_format(), $this->vendor->locale()) ?: '&nbsp;', 'label' => ctrans('texts.' . $this->entity_string . '_due_date')];
+
         $data['$dueDate'] = &$data['$due_date'];
         $data['$purchase_order.due_date'] = &$data['$due_date'];
 
@@ -160,7 +160,7 @@ class VendorHtmlEngine
         $data['$purchase_order.due_date'] = &$data['$due_date'];
         $data['$entity_issued_to'] = ['value' => '', 'label' => ctrans("texts.purchase_order_issued_to")];
 
-        $data['$portal_url'] = ['value' => $this->invitation->getPortalLink(), 'label' =>''];
+        $data['$portal_url'] = ['value' => $this->invitation->getPortalLink(), 'label' => ''];
 
         $data['$entity_number'] = &$data['$number'];
         $data['$discount'] = ['value' => $this->entity->discount, 'label' => ctrans('texts.discount')];
@@ -177,7 +177,7 @@ class VendorHtmlEngine
             $data['$balance_due'] = ['value' => Number::formatMoney($this->entity->partial, $this->vendor) ?: '&nbsp;', 'label' => ctrans('texts.partial_due')];
             $data['$balance_due_raw'] = ['value' => $this->entity->partial, 'label' => ctrans('texts.partial_due')];
             $data['$amount_raw'] = ['value' => $this->entity->partial, 'label' => ctrans('texts.partial_due')];
-            $data['$due_date'] = ['value' => $this->translateDate($this->entity->partial_due_date, $this->company->date_format(), $this->vendor->locale()) ?: '&nbsp;', 'label' => ctrans('texts.'.$this->entity_string.'_due_date')];
+            $data['$due_date'] = ['value' => $this->translateDate($this->entity->partial_due_date, $this->company->date_format(), $this->vendor->locale()) ?: '&nbsp;', 'label' => ctrans('texts.' . $this->entity_string . '_due_date')];
         } else {
             if ($this->entity->status_id == 1) {
                 $data['$balance_due'] = ['value' => Number::formatMoney($this->entity->amount, $this->vendor) ?: '&nbsp;', 'label' => ctrans('texts.balance_due')];
@@ -192,7 +192,7 @@ class VendorHtmlEngine
 
         $data['$outstanding'] = &$data['$balance_due'];
         $data['$purchase_order.balance_due'] = &$data['$balance_due'];
-        
+
         $data['$partial_due'] = ['value' => Number::formatMoney($this->entity->partial, $this->vendor) ?: '&nbsp;', 'label' => ctrans('texts.partial_due')];
         $data['$partial'] = &$data['$partial_due'];
 
@@ -244,7 +244,7 @@ class VendorHtmlEngine
         $data['$country'] = ['value' => isset($this->vendor->country->name) ? ctrans('texts.country_' . $this->vendor->country->name) : '', 'label' => ctrans('texts.country')];
         $data['$country_2'] = ['value' => isset($this->vendor->country) ? $this->vendor->country->iso_3166_2 : '', 'label' => ctrans('texts.country')];
         $data['$email'] = ['value' => isset($this->contact) ? $this->contact->email : 'no contact email on record', 'label' => ctrans('texts.email')];
-        
+
         if (str_contains($data['$email']['value'], 'example.com')) {
             $data['$email'] = ['value' => '', 'label' => ctrans('texts.email')];
         }
@@ -273,7 +273,7 @@ class VendorHtmlEngine
         $data['$vendor.postal_city'] = &$data['$postal_city'];
         $data['$vendor.country'] = &$data['$country'];
         $data['$vendor.email'] = &$data['$email'];
-        
+
         $data['$vendor.billing_address'] = &$data['$vendor_address'];
         $data['$vendor.billing_address1'] = &$data['$vendor.address1'];
         $data['$vendor.billing_address2'] = &$data['$vendor.address2'];
@@ -385,7 +385,7 @@ class VendorHtmlEngine
         $data['$font_name'] = ['value' => Helpers::resolveFont($this->settings->primary_font)['name'], 'label' => ''];
         $data['$font_url'] = ['value' => Helpers::resolveFont($this->settings->primary_font)['url'], 'label' => ''];
 
-        $data['$invoiceninja.whitelabel'] = ['value' => 'https://invoicing.co/images/new_logo.png', 'label' => ''];
+        $data['$invoiceninja.whitelabel'] = ['value' => 'https://inv.empiric.studio/images/new_logo.png', 'label' => ''];
 
         $data['$primary_color'] = ['value' => $this->settings->primary_color, 'label' => ''];
         $data['$secondary_color'] = ['value' => $this->settings->secondary_color, 'label' => ''];
@@ -395,7 +395,7 @@ class VendorHtmlEngine
 
         $data['$entity_footer'] = ['value' => Helpers::processReservedKeywords(\nl2br($this->entity->footer), $this->company), 'label' => ''];
         $data['$footer'] = &$data['$entity_footer'];
-        
+
         $data['$page_size'] = ['value' => $this->settings->page_size, 'label' => ''];
         $data['$page_layout'] = ['value' => property_exists($this->settings, 'page_layout') ? $this->settings->page_layout : 'Portrait', 'label' => ''];
 
@@ -452,7 +452,7 @@ class VendorHtmlEngine
             $data['$client.postal_city'] = &$data['$postal_city'];
             $data['$client.country'] = &$data['$country'];
             $data['$client.email'] = &$data['$email'];
-            
+
             $data['$client.billing_address'] = &$data['$client_address'];
             $data['$client.billing_address1'] = &$data['$client.address1'];
             $data['$client.billing_address2'] = &$data['$client.address2'];
@@ -484,7 +484,7 @@ class VendorHtmlEngine
         return $data;
     }
 
-    public function makeValues() :array
+    public function makeValues(): array
     {
         $data = [];
 
@@ -505,60 +505,60 @@ class VendorHtmlEngine
 
         foreach ($values as $key => $value) {
             $data['values'][$key] = $value['value'];
-            $data['labels'][$key.'_label'] = $value['label'];
+            $data['labels'][$key . '_label'] = $value['label'];
         }
 
         return $data;
     }
 
-    private function totalTaxLabels() :string
+    private function totalTaxLabels(): string
     {
         $data = '';
 
-        if (! $this->entity_calc->getTotalTaxMap()) {
+        if (!$this->entity_calc->getTotalTaxMap()) {
             return $data;
         }
 
         foreach ($this->entity_calc->getTotalTaxMap() as $tax) {
-            $data .= '<span>'.$tax['name'].'</span>';
+            $data .= '<span>' . $tax['name'] . '</span>';
         }
 
         return $data;
     }
 
-    private function totalTaxValues() :string
+    private function totalTaxValues(): string
     {
         $data = '';
 
-        if (! $this->entity_calc->getTotalTaxMap()) {
+        if (!$this->entity_calc->getTotalTaxMap()) {
             return $data;
         }
 
         foreach ($this->entity_calc->getTotalTaxMap() as $tax) {
-            $data .= '<span>'.Number::formatMoney($tax['total'], $this->vendor).'</span>';
+            $data .= '<span>' . Number::formatMoney($tax['total'], $this->vendor) . '</span>';
         }
 
         return $data;
     }
 
-    private function lineTaxLabels() :string
+    private function lineTaxLabels(): string
     {
         $tax_map = $this->entity_calc->getTaxMap();
 
         $data = '';
 
         foreach ($tax_map as $tax) {
-            $data .= '<span>'.$tax['name'].'</span>';
+            $data .= '<span>' . $tax['name'] . '</span>';
         }
 
         return $data;
     }
 
-    private function getCountryName() :string
+    private function getCountryName(): string
     {
         $countries = Cache::get('countries');
 
-        if (! $countries) {
+        if (!$countries) {
             $this->buildCache(true);
 
             $countries = Cache::get('countries');
@@ -580,7 +580,7 @@ class VendorHtmlEngine
     }
 
 
-    private function getCountryCode() :string
+    private function getCountryCode(): string
     {
         $country = Country::find($this->settings->country_id);
 
@@ -603,7 +603,7 @@ class VendorHtmlEngine
      * aggregate data
      */
 
-     /*
+    /*
     private function makeLineTaxes() :string
     {
         $tax_map = $this->entity_calc->getTaxMap();
@@ -742,16 +742,16 @@ html {
 
         return $css;
     }
-*/
+     */
 
-    private function lineTaxValues() :string
+    private function lineTaxValues(): string
     {
         $tax_map = $this->entity_calc->getTaxMap();
 
         $data = '';
 
         foreach ($tax_map as $tax) {
-            $data .= '<span>'.Number::formatMoney($tax['total'], $this->company).'</span>';
+            $data .= '<span>' . Number::formatMoney($tax['total'], $this->company) . '</span>';
         }
 
         return $data;
@@ -812,7 +812,7 @@ html {
     private function buildViewButton(string $link, string $text): string
     {
         if ($this->settings->email_style == 'plain') {
-            return '<a href="'. $link .'" target="_blank">'. $text .'</a>';
+            return '<a href="' . $link . '" target="_blank">' . $text . '</a>';
         }
 
 
@@ -825,9 +825,9 @@ html {
         <![endif]-->        
         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" >
         <tbody><tr>
-        <td align="center" class="new_button" style="border-radius: 2px; background-color: '.$this->settings->primary_color.'">
-            <a href="'. $link . '" target="_blank" class="new_button" style="text-decoration: none; border: 1px solid '.$this->settings->primary_color.'; display: inline-block; border-radius: 2px; padding-top: 15px; padding-bottom: 15px; padding-left: 25px; padding-right: 25px; font-size: 20px; color: #fff">
-            <singleline label="cta button">'. $text .'</singleline>
+        <td align="center" class="new_button" style="border-radius: 2px; background-color: ' . $this->settings->primary_color . '">
+            <a href="' . $link . '" target="_blank" class="new_button" style="text-decoration: none; border: 1px solid ' . $this->settings->primary_color . '; display: inline-block; border-radius: 2px; padding-top: 15px; padding-bottom: 15px; padding-left: 25px; padding-right: 25px; font-size: 20px; color: #fff">
+            <singleline label="cta button">' . $text . '</singleline>
             </a>
         </td>
         </tr>

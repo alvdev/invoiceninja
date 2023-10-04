@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Invoice Ninja (https://invoiceninja.com).
  *
@@ -56,12 +57,12 @@ class BackupUpdate extends Command
     {
         //always return state to first DB
 
-        if(Ninja::isSelfHost())
+        if (Ninja::isSelfHost())
             return;
-            
+
         $current_db = config('database.default');
 
-        if (! config('ninja.db.multi_db_enabled')) {
+        if (!config('ninja.db.multi_db_enabled')) {
             $this->handleOnDb();
         } else {
             //multiDB environment, need to
@@ -81,126 +82,123 @@ class BackupUpdate extends Command
 
         //logos
         Company::cursor()
-               ->each(function ($company) {
-                   $company_logo_path = $company->settings->company_logo;
+            ->each(function ($company) {
+                $company_logo_path = $company->settings->company_logo;
 
-                   if ($company_logo_path == 'https://invoicing.co/images/new_logo.png' || $company_logo_path == '') {
-                       return;
-                   }
+                if ($company_logo_path == 'https://inv.empiric.studio/images/new_logo.png' || $company_logo_path == '') {
+                    return;
+                }
 
-                   $logo = @file_get_contents($company_logo_path);
-                   $extension = @pathinfo($company->settings->company_logo, PATHINFO_EXTENSION);
-            
-                   if ($logo && $extension) {
-                       $path = "{$company->company_key}/{$company->company_key}.{$extension}";
+                $logo = @file_get_contents($company_logo_path);
+                $extension = @pathinfo($company->settings->company_logo, PATHINFO_EXTENSION);
 
-                       Storage::disk($this->option('disk'))->put($path, $logo);
+                if ($logo && $extension) {
+                    $path = "{$company->company_key}/{$company->company_key}.{$extension}";
 
-                       $url = Storage::disk($this->option('disk'))->url($path);
+                    Storage::disk($this->option('disk'))->put($path, $logo);
 
-                       nlog("Company - Moving {$company_logo_path} logo to {$this->option('disk')} final URL = {$url}}");
+                    $url = Storage::disk($this->option('disk'))->url($path);
 
-                       $settings = $company->settings;
-                       $settings->company_logo = $url;
-                       $company->settings = $settings;
-                       ;
-                       $company->save();
-                   }
-               });
+                    nlog("Company - Moving {$company_logo_path} logo to {$this->option('disk')} final URL = {$url}}");
+
+                    $settings = $company->settings;
+                    $settings->company_logo = $url;
+                    $company->settings = $settings;;
+                    $company->save();
+                }
+            });
 
         Client::withTrashed()
-              ->whereNotNull('settings->company_logo')
-              ->cursor()
-              ->each(function ($client) {
-                  $company_logo_path = $client->settings->company_logo;
+            ->whereNotNull('settings->company_logo')
+            ->cursor()
+            ->each(function ($client) {
+                $company_logo_path = $client->settings->company_logo;
 
-                  $logo = @file_get_contents($company_logo_path);
-                  $extension = @pathinfo($company_logo_path, PATHINFO_EXTENSION);
-       
-                  if ($logo && $extension) {
-                      $path = "{$client->company->company_key}/{$client->client_hash}.{$extension}";
+                $logo = @file_get_contents($company_logo_path);
+                $extension = @pathinfo($company_logo_path, PATHINFO_EXTENSION);
 
-                      Storage::disk($this->option('disk'))->put($path, $logo);
+                if ($logo && $extension) {
+                    $path = "{$client->company->company_key}/{$client->client_hash}.{$extension}";
 
-                      $url = Storage::disk($this->option('disk'))->url($path);
+                    Storage::disk($this->option('disk'))->put($path, $logo);
 
-                      nlog("Client - Moving {$company_logo_path} logo to {$this->option('disk')} final URL = {$url}}");
+                    $url = Storage::disk($this->option('disk'))->url($path);
 
-                      $settings = $client->settings;
-                      $settings->company_logo = $url;
-                      $client->settings = $settings;
-                      ;
-                      $client->saveQuietly();
-                  }
-              });
+                    nlog("Client - Moving {$company_logo_path} logo to {$this->option('disk')} final URL = {$url}}");
+
+                    $settings = $client->settings;
+                    $settings->company_logo = $url;
+                    $client->settings = $settings;;
+                    $client->saveQuietly();
+                }
+            });
 
         GroupSetting::withTrashed()
-              ->whereNotNull('settings->company_logo')
-              ->orWhere('settings->company_logo', '!=', '')
-              ->cursor()
-              ->each(function ($group) {
-                  $company_logo_path = $group->settings->company_logo;
+            ->whereNotNull('settings->company_logo')
+            ->orWhere('settings->company_logo', '!=', '')
+            ->cursor()
+            ->each(function ($group) {
+                $company_logo_path = $group->settings->company_logo;
 
-                  if (!$company_logo_path) {
-                      return;
-                  }
+                if (!$company_logo_path) {
+                    return;
+                }
 
-                  $logo = @file_get_contents($company_logo_path);
-                  $extension = @pathinfo($company_logo_path, PATHINFO_EXTENSION);
-       
-                  if ($logo && $extension) {
-                      $path = "{$group->company->company_key}/{$group->hashed_id}.{$extension}";
+                $logo = @file_get_contents($company_logo_path);
+                $extension = @pathinfo($company_logo_path, PATHINFO_EXTENSION);
 
-                      Storage::disk($this->option('disk'))->put($path, $logo);
+                if ($logo && $extension) {
+                    $path = "{$group->company->company_key}/{$group->hashed_id}.{$extension}";
 
-                      $url = Storage::disk($this->option('disk'))->url($path);
+                    Storage::disk($this->option('disk'))->put($path, $logo);
 
-                      nlog("Group - Moving {$company_logo_path} logo to {$this->option('disk')} final URL = {$url}}");
+                    $url = Storage::disk($this->option('disk'))->url($path);
 
-                      $settings = $group->settings;
-                      $settings->company_logo = $url;
-                      $group->settings = $settings;
-                      ;
-                      $group->saveQuietly();
-                  }
-              });
+                    nlog("Group - Moving {$company_logo_path} logo to {$this->option('disk')} final URL = {$url}}");
+
+                    $settings = $group->settings;
+                    $settings->company_logo = $url;
+                    $group->settings = $settings;;
+                    $group->saveQuietly();
+                }
+            });
 
 
 
         //documents
         Document::cursor()
-                ->each(function (Document $document) {
-                    $doc_bin = false;
+            ->each(function (Document $document) {
+                $doc_bin = false;
 
-                    try {
-                        $doc_bin = $document->getFile();
-                    } catch(\Exception $e) {
-                        nlog($e->getMessage());
-                    }
+                try {
+                    $doc_bin = $document->getFile();
+                } catch (\Exception $e) {
+                    nlog($e->getMessage());
+                }
 
-                    if ($doc_bin) {
-                        Storage::disk($this->option('disk'))->put($document->url, $doc_bin);
+                if ($doc_bin) {
+                    Storage::disk($this->option('disk'))->put($document->url, $doc_bin);
 
-                        $document->disk = $this->option('disk');
-                        $document->saveQuietly();
+                    $document->disk = $this->option('disk');
+                    $document->saveQuietly();
 
-                        nlog("Documents - Moving {$document->url} to {$this->option('disk')}");
-                    }
-                });
+                    nlog("Documents - Moving {$document->url} to {$this->option('disk')}");
+                }
+            });
 
 
         //backups
         Backup::whereNotNull('filename')
-                ->where('filename', '!=', '')
-                ->cursor()
-                ->each(function ($backup) {
-                    $backup_bin = Storage::disk('s3')->get($backup->filename);
+            ->where('filename', '!=', '')
+            ->cursor()
+            ->each(function ($backup) {
+                $backup_bin = Storage::disk('s3')->get($backup->filename);
 
-                    if ($backup_bin) {
-                        Storage::disk($this->option('disk'))->put($backup->filename, $backup_bin);
+                if ($backup_bin) {
+                    Storage::disk($this->option('disk'))->put($backup->filename, $backup_bin);
 
-                        nlog("Backups - Moving {$backup->filename} to {$this->option('disk')}");
-                    }
-                });
+                    nlog("Backups - Moving {$backup->filename} to {$this->option('disk')}");
+                }
+            });
     }
 }
