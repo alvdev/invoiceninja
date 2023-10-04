@@ -25,7 +25,7 @@
         }
         @if(isset($settings) && $settings->email_style === 'dark')
         body {
-            background-color: #1a1a1a !important;
+            background-color: #111111 !important;
             color: #ffffff !important;
         }
         div, tr, td {
@@ -38,10 +38,10 @@
             color: #bbbbbc !important;
         }
         .dark-bg-base {
-            background-color: #222222 !important;
+            background-color: #111111 !important;
         }
         .dark-bg {
-            background-color: #3a3a3c !important;
+            background-color: #454545 !important;
         }
         .dark-text-white p {
             color: #ffffff !important;
@@ -54,7 +54,7 @@
         #content .button {
             display: inline-block;
             background-color: {{ $primary_color }};
-            color: #ffffff;
+            /* color: #ffffff; */
             text-transform: uppercase;
             letter-spacing: 2px;
             text-decoration: none;
@@ -63,6 +63,7 @@
             font-weight: 600;
             margin-bottom: 5px;
             margin-top: 10px;
+            border-radius: 999px;
         }
         #content h1 {
             font-family: 'canada-type-gibson', 'roboto', Arial, Helvetica, sans-serif;
@@ -116,10 +117,16 @@
         
         .new_button a {
             background-color: {{ $primary_color }};
+            border-radius: 999px;
         }
 
         .logo {
 
+        }
+
+        .footer a {
+            color: #c4b5fd;
+            text-decoration: none;
         }
     </style>
 
@@ -138,8 +145,7 @@
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" >
     <tr>
         <td>
-            <table align="center" border="0" cellpadding="0" cellspacing="0" width="570"
-                   style="border: 1px solid #c2c2c2;" class="dark-bg-base">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="570" class="dark-bg-base">
                 
                 <!--[if mso]>
                 <tr class="dark-bg" style="margin-top:10px; border: none;">
@@ -149,16 +155,16 @@
                 
                 <tr>
                     <td align="center" cellpadding="20">
-                        <div style="border: 1px solid #c2c2c2; border-bottom: none; padding-bottom: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; padding-top:10px;">
+                        <div style="padding-bottom: 10px; padding-top:50px;">
                             @if($logo && strpos($logo, 'blank.png') === false)
-                             <img class="" src="{{ $logo ?? '' }}" width="50%" height="" alt=" " border="0" style="width: 50%; max-width: 570px; display: block;">
+                             <img class="" src="{{ $logo ?? '' }}" width="100" height="" alt=" " border="0" style="width: 100px; max-width: 100px; display: inline-block;">
                             @endif
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td cellpadding="5">
-                        <div style="border: 1px solid #c2c2c2; border-top: none; border-bottom: none; padding: 20px; text-align: {{ $email_alignment }}" id="content">
+                        <div style="padding: 20px; text-align: {{ $email_alignment }}" id="content">
                                 <div style="padding-top: 10px;"></div>
 
                                 {{ $slot ?? '' }}
@@ -166,7 +172,7 @@
 
                                 <div>
                                     <a href="#"
-                                        style="display: inline-block;background-color: {{ $primary_color }}; color: #ffffff; text-transform: uppercase;letter-spacing: 2px; text-decoration: none; font-size: 13px; font-weight: 600;">
+                                        style="display: inline-block;background-color: {{ $primary_color }}; color: #ffffff; border-radius: 999px; text-transform: uppercase;letter-spacing: 2px; text-decoration: none; font-size: 13px; font-weight: 600;">
                                     </a>
                                 </div>
 
@@ -185,14 +191,14 @@
                 
                 <tr>
                   <td height="0">
-                   <div style="border: 1px solid #c2c2c2; border-top: none; border-bottom: none; padding: 5px; text-align: center" id="content"> </div>
+                   <div style="padding: 5px; text-align: center" id="content"> </div>
                  </td>
                 </tr>
 
                 <tr>
-                    <td cellpadding="20" bgcolor="#f9f9f9">
+                    <td cellpadding="20" bgcolor="#111111">
                         <div class="dark-bg dark-text-white"
-                             style="text-align: center; padding-top: 10px; padding-bottom: 25px; background-color: #f9f9f9; border: 1px solid #c2c2c2; border-top: none; border-bottom-color: #f9f9f9;">
+                             style="text-align: center; padding-top: 25px; padding-bottom: 25px; background-color: #111111;">
                             @isset($signature)
                                 <p style="font-size: 15px; color: #2e2e2e; font-family: 'roboto', Arial, Helvetica, sans-serif; font-weight: 400; margin-bottom: 30px;">
                                     {!! nl2br($signature) !!}
@@ -200,38 +206,37 @@
                             @endisset
 
                             @if(isset($company) && $company instanceof \App\Models\Company && $company->getSetting('show_email_footer'))
-                                <p style="font-size: 15px; color: #2e2e2e; font-family: 'roboto', Arial, Helvetica, sans-serif; font-weight: 500; margin-bottom:0;">
-                                    {{ $company->present()->name() }}</p>
-                                <p style="font-size: 15px; color: #2e2e2e; font-family: 'roboto', Arial, Helvetica, sans-serif; font-weight: 400; margin-top: 5px;">
-                                    <p>{{ $company->settings->phone }}</p>
-                                    <p style="font-weight: 500"> {{ $company->settings->website }}</p>
-                                </p>
+                                <div class="footer" style="font-size: 15px; font-family: 'roboto', Arial, Helvetica, sans-serif; font-weight: 500; color: #ffffff">
+                                    {{ $company->present()->name() }}
+                                    <span style="margin: 0 20px; text-decoration: none">{{ $company->settings->phone }}</span>
+                                    <span>{{ $company->settings->website }}</span>
+                                </div>
                             @endif
                         </div>
                     </td>
                 </tr>
 
-                <tr>
+                {{-- <tr>
                     <td bgcolor="#242424"  cellpadding="20">
                         <div class="dark-bg-base"
-                             style="padding-top: 10px;padding-bottom: 10px; background-color: #242424; border: 1px solid #c2c2c2; border-top-color: #242424; border-bottom-color: #242424;">
+                             style="padding-top: 10px;padding-bottom: 10px; background-color: #242424;">
                             @if(isset($company))
-                                @if($company->account->isPaid())
+                                @if(!$company->account->isPaid())
                                     <p style="text-align: center; color: #ffffff; font-size: 10px;
                             font-family: Verdana, Geneva, Tahoma, sans-serif;">© {{ date('Y') }} {{ $company->present()->name() }}, All Rights Reserved</p>
                                 @else
                                     <p style="text-align: center; color: #ffffff; font-size: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
-                                        © {{ date('Y') }} Invoice Ninja, All Rights Reserved
+                                        © {{ date('Y') }} EMPIRIC▲STUDIO, All Rights Reserved
                                     </p>
                                 @endif
                             @else
                                 <p style="text-align: center; color: #ffffff; font-size: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
-                                    © {{ date('Y') }} Invoice Ninja, All Rights Reserved
+                                    © {{ date('Y') }} EMPIRIC▲STUDIO, All Rights Reserved
                                 </p>
                             @endif
                         </div>
                     </td>
-                </tr>
+                </tr> --}}
             </table>
         </td>
     </tr>
