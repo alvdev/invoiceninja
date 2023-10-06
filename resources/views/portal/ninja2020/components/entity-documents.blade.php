@@ -1,6 +1,6 @@
 @if ($entity->documents->count() > 0 || $entity->company->documents->count() > 0 || ($entity->expense && $entity->expense->invoice_documents) || ($entity->task && $entity->company->invoice_task_documents))
     <div class="bg-white shadow sm:rounded-lg my-4">
-        <div class="px-4 py-5 sm:p-6">
+        <div class="">
             <div class="sm:flex sm:items-start sm:justify-between">
                 <div>
                     <p class="text-lg leading-6 font-medium text-gray-900">{{ ctrans('texts.attachments') }}:</p>

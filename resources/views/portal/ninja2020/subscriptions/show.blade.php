@@ -74,11 +74,11 @@
         @endif
 
         @if($invoice->subscription && $invoice->subscription?->allow_cancellation)
-        <div class="bg-white shadow sm:rounded-lg mt-4">
-            <div class="px-4 py-5 sm:p-6">
+        <div class="">
+            <div class="">
                 <div class="sm:flex sm:items-start sm:justify-between">
                     <div>
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        <h3 class="text-2xl">
                             {{ ctrans('texts.cancellation') }}
                         </h3>
                         <div class="mt-2 max-w-xl text-sm leading-5 text-gray-500" x-data="{ open: false }">

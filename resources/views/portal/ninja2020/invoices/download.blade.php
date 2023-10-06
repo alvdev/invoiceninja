@@ -15,7 +15,7 @@
                     @csrf
                     <button type="submit"
                         onclick="setTimeout(() => this.disabled = true, 0); setTimeout(() => this.disabled = true, 5000); return true;"
-                        class="button button-primary bg-primary" name="action"
+                        class="button button-primary bg-primary whitespace-nowrap" name="action"
                         value="download">{{ ctrans('texts.download') }}</button>
                 </form>
             </div>

@@ -3,9 +3,9 @@
 
 @section('body')
     <div class="container mx-auto">
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-            <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <div class="">
+            <div class="mb-8">
+                <h3 class="text-2xl">
                     {{ ctrans('texts.recurring_invoices') }}
                 </h3>
                 <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500" translate>
@@ -62,10 +62,10 @@
         @include('portal.ninja2020.components.entity-documents', ['entity' => $invoice])
 
         @if($invoice->auto_bill === 'optin' || $invoice->auto_bill === 'optout')
-            <div class="bg-white shadow overflow-hidden lg:rounded-lg mt-4">
+            <div class="mt-8">
                 <div class="flex flex-col md:flex-row items-start justify-between px-4 py-5 sm:p-6">
                     <div>
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">{{ ctrans('texts.auto_bill') }}</h3>
+                        <h3 class="text-2xl">{{ ctrans('texts.auto_bill') }}</h3>
                         <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">{{ ctrans('texts.auto_bill_option')}}</p>
                     </div>
 
@@ -76,9 +76,9 @@
             </div>
         @endif
 
-        <div class="mt-4 overflow-hidden bg-white shadow sm:rounded-lg">
-        <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
-            <h3 class="text-lg font-medium leading-6 text-gray-900">
+        <div class="mt-8">
+        <div class="">
+            <h3 class="text-2xl">
                 {{ ctrans('texts.invoices') }}
             </h3>
         </div>
@@ -113,11 +113,11 @@
         @if($invoice->subscription && $invoice->subscription?->allow_cancellation)
         {{-- INV2-591 --}}
         {{-- @if(false) --}}
-        <div class="bg-white shadow sm:rounded-lg mt-4">
-            <div class="px-4 py-5 sm:p-6">
+        <div class="">
+            <div class="">
                 <div class="sm:flex sm:items-start sm:justify-between">
                     <div>
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        <h3 class="text-2xl">
                             {{ ctrans('texts.cancellation') }}
                         </h3>
                         <div class="mt-2 max-w-xl text-sm leading-5 text-gray-500">

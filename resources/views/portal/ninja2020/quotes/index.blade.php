@@ -12,7 +12,7 @@
 @endsection
 
 @section('body')
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center mb-12">
         <form action="{{ route('client.quotes.bulk') }}" method="post" id="bulkActions">
             @csrf
             <button type="submit"

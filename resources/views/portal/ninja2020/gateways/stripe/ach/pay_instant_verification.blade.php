@@ -1,7 +1,7 @@
 @extends('portal.ninja2020.layout.payments', ['gateway_title' => 'ACH', 'card_title' => 'ACH'])
 
 @section('gateway_content')
-    @if(count($tokens) > 0)
+    @if (count($tokens) > 0)
         <div class="alert alert-failure mb-4" hidden id="errors"></div>
 
         @include('portal.ninja2020.gateways.includes.payment_details')
@@ -19,32 +19,27 @@
         </form>
 
         @component('portal.ninja2020.components.general.card-element', ['title' => ctrans('texts.pay_with')])
-            @if(count($tokens) > 0)
-                @foreach($tokens as $token)
+            @if (count($tokens) > 0)
+                @foreach ($tokens as $token)
                     <label class="mr-4">
-                        <input
-                            type="radio"
-                            data-token="{{ $token->hashed_id }}"
-                            name="payment-type"
-                            class="form-radio cursor-pointer toggle-payment-with-token"/>
-                        <span class="ml-1 cursor-pointer">{{ ctrans('texts.bank_transfer') }} (*{{ $token->meta->last4 }})</span>
+                        <input type="radio" data-token="{{ $token->hashed_id }}" name="payment-type"
+                            class="form-radio cursor-pointer toggle-payment-with-token" />
+                        <span class="ml-1 cursor-pointer">{{ ctrans('texts.bank_transfer') }}
+                            (*{{ $token->meta->last4 }})</span>
                     </label>
                 @endforeach
             @endisset
         @endcomponent
 
-    @include('portal.ninja2020.gateways.includes.pay_now')
-
+        @include('portal.ninja2020.gateways.includes.pay_now')
     @else
+        @component('portal.ninja2020.components.general.card-element-single', ['title' => 'ACH', 'show_title' => false])
+            <span>Pay with a new bank account.</span>
+            <button type="button" class="button button-primary bg-primary whitespace-nowrap"
+                id="new-bank">{{ ctrans('texts.new_bank_account') }}</button>
+        @endcomponent
 
-    @component('portal.ninja2020.components.general.card-element-single', ['title' => 'ACH', 'show_title' => false])
-        <span>Pay with a new bank account.</span>
-        <button type="button" class="button button-primary bg-primary" id="new-bank">{{ ctrans('texts.new_bank_account') }}</button>
-
-    @endcomponent
-
-    @endif    
-
+    @endif
 @endsection
 
 @push('footer')
@@ -55,12 +50,12 @@
                 document.querySelector('input[name=source]').value = element.target.dataset.token;
             }));
 
-        document.getElementById('pay-now').addEventListener('click', function () {
+        document.getElementById('pay-now').addEventListener('click', function() {
 
-                    let payNowButton = document.getElementById('pay-now');
-                    payNowButton.disabled = true;
-                    payNowButton.querySelector('svg').classList.remove('hidden');
-                    payNowButton.querySelector('span').classList.add('hidden');
+            let payNowButton = document.getElementById('pay-now');
+            payNowButton.disabled = true;
+            payNowButton.querySelector('svg').classList.remove('hidden');
+            payNowButton.querySelector('span').classList.add('hidden');
 
             document.getElementById('server-response').submit();
         });

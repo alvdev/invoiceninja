@@ -23,7 +23,7 @@
             </div>
 
             <div class="mx-auto">
-                <div class="flex flex-col gap-12 pt-4 py-6">
+                <div class="">
                     @includeWhen(session()->has('success'),
                         'portal.ninja2020.components.general.messages.success')
 

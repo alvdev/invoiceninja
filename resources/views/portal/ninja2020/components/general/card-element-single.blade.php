@@ -1,5 +1,5 @@
-<div class="px-4 py-5 sm:px-6">
-    <dt class="text-sm leading-5 font-medium">
+<div class="mt-12">
+    <dt class="text-lg">
         {{ $slot }}
     </dt>
 </div>

@@ -3,9 +3,9 @@
 
 @section('body')
     <div class="container mx-auto">
-        <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-            <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
-                <h3 class="text-lg font-medium leading-6 text-gray-900">
+        <div class="">
+            <div class="">
+                <h3 class="text-2xl">
                     {{ ctrans('texts.payment') }}
                 </h3>
                 <p class="max-w-2xl mt-1 text-sm leading-5 text-gray-500" translate>
@@ -16,7 +16,7 @@
                 <dl>
 
                     @if(!empty($payment->status_id) && !is_null($payment->status_id))
-                        <div class="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4">
                             <dt class="text-sm font-medium leading-5 text-gray-500">
                                 {{ ctrans('texts.status') }}
                             </dt>
@@ -27,7 +27,7 @@
                     @endif
 
                     @if(!empty($payment->clientPaymentDate()) && !is_null($payment->clientPaymentDate()))
-                        <div class="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4">
                             <dt class="text-sm font-medium leading-5 text-gray-500">
                                 {{ ctrans('texts.payment_date') }}
                             </dt>
@@ -38,7 +38,7 @@
                     @endif
 
                     @if(!empty($payment->number) && !is_null($payment->number))
-                        <div class="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4">
                             <dt class="text-sm font-medium leading-5 text-gray-500">
                                 {{ ctrans('texts.number') }}
                             </dt>
@@ -49,7 +49,7 @@
                     @endif
 
                     @if(!empty($payment->transaction_reference) && !is_null($payment->transaction_reference))
-                        <div class="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4">
                             <dt class="text-sm font-medium leading-5 text-gray-500">
                                 {{ ctrans('texts.transaction_reference') }}
                             </dt>
@@ -62,7 +62,7 @@
                     @endif
 
                     
-                        <div class="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4">
                             <dt class="text-sm font-medium leading-5 text-gray-500">
                                 {{ ctrans('texts.method') }}
                             </dt>
@@ -73,7 +73,7 @@
                     
 
                     @if(!empty($payment->formattedAmount()) && !is_null($payment->formattedAmount()))
-                        <div class="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4">
                             <dt class="text-sm font-medium leading-5 text-gray-500">
                                 {{ ctrans('texts.amount') }}
                             </dt>
@@ -86,7 +86,7 @@
                     @if(!empty($payment->status_id) && !is_null($payment->status_id))
 
                         @if($payment->refunded > 0)
-                            <div class="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4">
                                 <dt class="text-sm font-medium leading-5 text-gray-500">
                                     {{ ctrans('texts.refunded') }}
                                 </dt>
@@ -97,7 +97,7 @@
                         @endif
 
                         @if($payment->applied != $payment->amount)
-                            <div class="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4">
                                 <dt class="text-sm font-medium leading-5 text-gray-500">
                                     {{ ctrans('texts.remaining') }}
                                 </dt>
@@ -111,9 +111,9 @@
                 </dl>
             </div>
         </div>
-        <div class="mt-4 overflow-hidden bg-white shadow sm:rounded-lg">
-            <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
-                <h3 class="text-lg font-medium leading-6 text-gray-900">
+        <div class="mt-8">
+            <div class="">
+                <h3 class="text-2xl">
                     {{ ctrans('texts.invoices') }}
                 </h3>
                 <p class="max-w-2xl mt-1 text-sm leading-5 text-gray-500">
@@ -124,12 +124,12 @@
                 <dl>
                     @foreach($payment->invoices as $invoice)
                         @if(!$invoice->is_proforma && !$invoice->is_deleted)
-                        <div class="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <div class="my-8 sm:grid sm:grid-cols-3 sm:gap-4">
                             <dt class="text-sm font-medium leading-5 text-gray-500">
                                 {{ ctrans('texts.invoice_number') }}
                             </dt>
                             <div class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                                <a class="button-link text-primary"
+                                <a class="text-primary hover:text-black"
                                    href="{{ route('client.invoice.show', ['invoice' => $invoice->hashed_id])}}">
                                     {{ $invoice->number }}
                                 </a>

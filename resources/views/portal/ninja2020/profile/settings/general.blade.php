@@ -91,7 +91,7 @@
                     </div>
                     <div class="mt-8 text-right">
                         <button data-ref="update-contact-details"
-                            class="button button-primary bg-primary">{{ $saved }}</button>
+                            class="button button-primary bg-primary whitespace-nowrap">{{ $saved }}</button>
                     </div>
                 </form>
             </div> <!-- End of main form -->

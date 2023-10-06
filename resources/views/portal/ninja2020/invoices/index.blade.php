@@ -12,7 +12,7 @@
 @endsection
 
 @section('body')
-    <div class="flex items-center">
+    <div class="flex items-center mb-12">
         <form action="{{ route('client.invoices.bulk') }}" method="post" id="bulkActions">
             @csrf
             <button type="submit"
