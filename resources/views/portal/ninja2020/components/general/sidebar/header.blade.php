@@ -1,10 +1,10 @@
-<nav class="flex place-content-between py-8 gap-16">
-    <a href="{{ route('client.dashboard') }}">
-        <img class="w-24 h-auto" src="{!! auth()->guard('contact')->user()->company->present()->logo($settings) !!}"
+<nav class="flex place-content-between py-8 gap-8 md:gap-12 place-items-center">
+    <a href="{{ route('client.dashboard') }}" class="hidden md:block">
+        <img class="w-24" src="{!! auth()->guard('contact')->user()->company->present()->logo($settings) !!}"
             alt="{{ auth()->guard('contact')->user()->company->present()->name() }} logo" />
     </a>
 
-    <div class="flex flex-1 items-center gap-16">
+    <div class="flex flex-1 items-center">
         {{-- <ul class="flex gap-12 items-center content-center font-semibold uppercase">
             <li class="selected"> <a href="/"> WEB </a> </li>
             <li class=""> <a href="/seo"> SEO </a> </li>
@@ -69,7 +69,7 @@
                             x-transition:leave-start="transform opacity-100 scale-100"
                             x-transition:leave-end="transform opacity-0 scale-95"
                             class="origin-top-right absolute right-0 mt-4 shadow-xl">
-                            <div class="flex whitespace-nowrap py-4 ring-2 ring-purple-700">
+                            <div class="flex whitespace-nowrap py-4 ring-2 ring-purple-700 bg-white">
                                 <a data-ref="client-profile-dropdown-settings"
                                     href="{{ route('client.profile.edit', ['client_contact' => auth()->guard('contact')->user()->hashed_id]) }}"
                                     class="block px-6 py-3 hover:text-purple-700 transition ease-in-out duration-150">
