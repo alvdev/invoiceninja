@@ -2632,6 +2632,24 @@ button:disabled {
   color: rgba(0, 0, 0, var(--tw-text-opacity)) !important;
 }
 
+/* alvdev */
+
+#entity-details > div {
+  margin-bottom: 0.5rem;
+  justify-content: space-between;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+#entity-details > div > p {
+  width: auto;
+}
+
+#entity-details > div > p:first-child {
+  --tw-text-opacity: 1;
+  color: rgba(113, 113, 122, var(--tw-text-opacity));
+}
+
 /* purgecss end ignore */
 
 .sr-only{

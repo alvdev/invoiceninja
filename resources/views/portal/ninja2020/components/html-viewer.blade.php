@@ -28,9 +28,9 @@ span {
 </style>
 @endpush
 
-<div class="w-full bg-white py-3 border-2 shadow sm:rounded-lg">
+<div class="w-full bg-white mt-4">
 
-    <div class="px-3 border-fuchsia-600 border-b-2 pb-3">
+    <div class="pb-3">
     
         <div id="company-details" class="mx-auto">
             {!! $company_details !!}
@@ -38,22 +38,22 @@ span {
 
     </div>
 
-    <div class="border-fuchsia-600 border-b-2 pb-3 mt-3">
+    <div class="mt-3">
 
         <div id="entity-details"> {!! $entity_details !!} </div>
 
     </div>
 
-    <div id="user-details" class="mt-3 px-3 border-b-2 border-fuschia-600 flex flex-col items-end"> 
+    <div id="user-details" class="mt-6 flex flex-col items-end"> 
 
-        <div x-data="{ show_user: false }" class="mb-3">
+        <div x-data="{ show_user: false }" class="mb-3 flex flex-col items-end text-right">
 
-            <button @click="show_user = !show_user" :aria-expanded="show_user ? 'true' : 'false'" :class="{ 'active': show_user }" class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+            <button @click="show_user = !show_user" :aria-expanded="show_user ? 'true' : 'false'" :class="{ 'active': show_user }" class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-6 rounded-full inline-flex items-center">
                 <span class="overflow-ellipsis  overflow-hidden">{{ $user_name }}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
             </button>
 
-            <div id="terms" class="py-3"  x-show="show_user">
+            <div id="terms" class="py-4 px-6 mt-2 rounded-2xl bg-gray-100"  x-show="show_user">
                 {!! $user_details !!}
             </div>
 
@@ -63,20 +63,20 @@ span {
     </div>
 
     @if($products->count() > 0)
-    <div id="product-details" class="py-6 mr-5 ml-5">
+    <div id="product-details" class="py-6">
         <table width="100%">
             <thead>
-                <tr class="border-b-2">
-                    <th style="text-align:left; width:70%; padding-left:2px;">Item</th>
-                    <th style="text-align:right; width:30%; padding-right:2px;">Amount</th>
+                <tr class="font-semibold">
+                    <th style="text-align:left; width:70%; padding-left:2px;" class="font-semibold uppercase pb-2">Item</th>
+                    <th style="text-align:right; width:30%; padding-right:2px;" class="font-semibold uppercase pb-2">Amount</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($products as $product)
-                <tr style="display: table-row;" class="border-b-2">
+                <tr style="display: table-row;" class="border-b">
                     <td>
-                        <div class="product-information">
-                            <div class="item-details">
+                        <div class="product-information py-2">
+                            <div class="item-details text-gray-500">
                                 <p class="mt-2">
                                     @if($show_quantity)
                                     {{ $product['quantity'] }} x
@@ -129,17 +129,17 @@ span {
         </table>
     </div>
     @endif
-    <div id="totals" class="mb-10 mr-3 ml-3">
+    <div id="totals" class="mb-10">
         <table width="100%">
             <tbody>
                 <tr>
-                    <td style="text-align:left; padding-right:10px;" class="text-lg">{{ ctrans('texts.total') }}</td>
-                    <td style="text-align:right; padding-right:10px;" class="text-lg">{{ $amount }}</td>
+                    <td style="text-align:left; padding-right:10px;" class="text-lg py-2 uppercase font-semibold text-gray-500">{{ ctrans('texts.total') }}</td>
+                    <td style="text-align:right; padding-right:10px;" class="text-xl py-2 uppercase font-semibold">{{ $amount }}</td>
                 </tr>
                 @if(!$is_quote)
                  <tr>
-                    <td style="text-align:left; padding-right:10px;" class="text-lg">{{ ctrans('texts.balance') }}</td>
-                    <td style="text-align:right; padding-right:10px;" class="text-lg">{{ $balance }}</td>
+                    <td style="text-align:left; padding-right:10px;" class="text-lg py-2 uppercase font-semibold text-gray-500">{{ ctrans('texts.balance') }}</td>
+                    <td style="text-align:right; padding-right:10px;" class="text-xl py-2 uppercase font-semibold">{{ $balance }}</td>
                 </tr>
                 @endif
             </tbody>

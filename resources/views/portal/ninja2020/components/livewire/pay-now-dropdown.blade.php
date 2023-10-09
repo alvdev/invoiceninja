@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div x-show="open"
-                class="absolute right-0 whitespace-nowrap mt-2 origin-top-right rounded-3xl shadow-lg border border-black overflow-hidden">
+                class="absolute right-0 whitespace-nowrap mt-2 origin-top-right rounded-3xl shadow-lg border border-black overflow-hidden bg-white">
                 <div class="text-right">
                     <div class="py-1">
                         @foreach ($methods as $index => $method)
