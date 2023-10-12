@@ -334,7 +334,7 @@ class PaymentEmailEngine extends BaseEmailEngine
 
     private function formatInvoices()
     {
-        $invoice_list = '<br><br>';
+        $invoice_list = '- ';
 
         foreach ($this->payment->invoices as $invoice) {
             $invoice_list .= ctrans('texts.invoice_number_short')." {$invoice->number} ".Number::formatMoney($invoice->pivot->amount, $this->client).'<br>';
@@ -373,7 +373,7 @@ class PaymentEmailEngine extends BaseEmailEngine
 
     private function formatInvoiceReferences()
     {
-        $invoice_list = '<br><br>';
+        $invoice_list = '- ';
 
         foreach ($this->payment->invoices as $invoice) {
             if (strlen($invoice->po_number) > 1) {
