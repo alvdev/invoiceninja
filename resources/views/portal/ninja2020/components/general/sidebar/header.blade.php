@@ -17,9 +17,9 @@
 
         <div class="relative z-10 flex-shrink-0 flex flex-1 h-16 bg-white"
             xmlns:x-transition="http://www.w3.org/1999/xhtml">
-            <div class="flex-1 flex justify-between items-center">
-                <span class="text-4xl text-gray-900 font-bold uppercase break-all" data-ref="meta-title">@yield('meta_title')</span>
-                <div class="flex items-center md:ml-6 md:mr-2">
+            <div class="flex-1 flex flex-col-reverse justify-center gap-4 lg:flex-row lg:justify-between lg:items-center whitespace-nowrap">
+                <span class="text-4xl text-gray-900 font-bold uppercase whitespace-pre-wrap" data-ref="meta-title">@yield('meta_title')</span>
+                <div class="flex items-center lg:ml-6">
                     @if ($multiple_contacts->count() > 1)
                         <div class="relative inline-block text-left" x-data="{ open: false }">
                             <div>
@@ -36,7 +36,7 @@
                                     </button>
                                 </span>
                             </div>
-                            <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg"
+                            <div class="origin-top-left absolute left-0 mt-2 w-56 rounded-md shadow-lg"
                                 x-show="open">
                                 <div class="rounded bg-white ring-1 ring-black ring-opacity-5">
                                     <div class="py-1">
