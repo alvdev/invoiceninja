@@ -58,7 +58,7 @@ $LANG = array(
     'invoice_terms' => 'Términos de Facturación',
     'save_as_default_terms' => 'Guardar como términos por defecto',
     'download_pdf' => 'Descargar PDF',
-    'pay_now' => 'Pagar ahora',
+    'pay_now' => 'Hacer pago',
     'save_invoice' => 'Guardar factura',
     'clone_invoice' => 'Clonar como Factura',
     'archive_invoice' => 'Archivar Factura',
@@ -398,7 +398,7 @@ $LANG = array(
     'payment_title' => 'Ingresa la Dirección de Facturación de tu Tareta de Crédito',
     'payment_cvv' => '*Este es el dígito de 3-4 números en la parte trasera de su tarjeta',
     'payment_footer1' => '*La dirección debe coincidir con la dirección asociada a la tarjeta de crédito.',
-    'payment_footer2' => '*Por favor haz clic en "PAGAR AHORA" sólo una vez - la transacción puede demorarse hasta un minuto en ser procesada.',
+    'payment_footer2' => '*Por favor haz clic en "Hacer pago" sólo una vez - la transacción puede demorarse hasta un minuto en ser procesada.',
     'id_number' => 'ID Number',
     'white_label_link' => 'Etiqueta Blanca',
     'white_label_header' => 'Etiqueta Blanca',
@@ -455,7 +455,7 @@ $LANG = array(
     'billing_method' => 'Método de facturación',
     'order_overview' => 'Resumen de la orden',
     'match_address' => '*La dirección debe coincidir con la dirección asociada a la tarjeta de crédito.',
-    'click_once' => '*Por favor haga clic en "PAGAR AHORA" sólo una vez - la transacción puede demorarse hasta un minuto en ser procesada.',
+    'click_once' => '*Por favor haga clic en "Hacer pago" sólo una vez - la transacción puede demorarse hasta un minuto en ser procesada.',
     'invoice_footer' => 'Pie de págia de la factura',
     'save_as_default_footer' => 'Guardar como el pie de página por defecto',
     'token_management' => 'Administración de Tokens',
@@ -5160,5 +5160,3 @@ $LANG = array(
 );
 
 return $LANG;
-
-?>
